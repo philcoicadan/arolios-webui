@@ -31,10 +31,10 @@ Suivez les instructions que vous trouverez sur Internet, par exemple [ici](https
 3. Configurez votre serveur web (Apache par exemple) pour servir **AROLIOS WebUI**. Par exemple avec Apache sur Linux:
     1. Placez vous dans le repertoire /etc/apache2/sites-available
     2. Copiez le fichier 000-default.conf (par exemple arolios.conf)
-    3. Dans cette copie, renseignez les paramètres ServerName (l'URL pour adresser **AROLIOS WebUI**, par exemple www.my-arolios.com)  et DocumentRoot (l'emplacement du fichier index.html, par exemple /var/www/arolios_webui)
+    3. Dans cette copie, renseignez les paramètres ServerName (l'URL pour adresser **AROLIOS WebUI**, par exemple www.my-arolios.example.com)  et DocumentRoot (l'emplacement du fichier index.html, par exemple /var/www/arolios_webui)
     4. Passez la commande: sudo a2ensite /etc/apache/sites-available/arolios.conf
     5. Redémarrez le serveur Apache: sudo systemctl restart apache2
-4. Si le serveur de l'API AROLIOS que vous avez renseigné dans le paramètre VITE_BACKEND_URL est lancé ainsi que votre serveur web servant **AROLIOS WebUI**  (Apache par exemple), vous pouvez démarrer **AROLIOS WebUI** depuis votre navigateur web en l'adressant avec l'URL renseigné dans la configuration de votre serveur Web ( par exemple www.my-arolios.com)
+4. Si le serveur de l'API AROLIOS que vous avez renseigné dans le paramètre VITE_BACKEND_URL est lancé ainsi que votre serveur web servant **AROLIOS WebUI**  (Apache par exemple), vous pouvez démarrer **AROLIOS WebUI** depuis votre navigateur web en l'adressant avec l'URL renseigné dans la configuration de votre serveur Web ( par exemple www.my-arolios.example.com)
 En cas de difficulté, référez-vous à la documentation de votre serveur web ou aux articles disponibles sur Internet pour y déployer une application React.
 
 
