@@ -38,13 +38,13 @@ const About = () => {
 
     return (
         <div>
-            <p>AROLIOS WebUI &nbsp;{translate('arolios.WebUI_purpose')}.</p>
+            <p>AROLIOS WebUI &nbsp;{translate('arolios.webui_purpose')}.</p>
             <p>AROLIOS &nbsp;{translate('arolios.trademark_registered')}.</p>
             <p>AROLIOS WebUI &nbsp; &copy; 2024 Philippe Coicadan. {translate('arolios.all_rights_reserved')}.</p>
             <p>AROLIOS WebUI &nbsp;{translate('arolios.license_intro')}</p>
 
             <LicenseText/>
-            <p>{translate('arolios.source_link')}&nbsp; http://my_  repository/arolios-webui</p>
+            <p>{translate('arolios.source_link')}&nbsp; https://lab.frogg.it/philcoicadan/arolios-webui</p>
         
         </div>
     )

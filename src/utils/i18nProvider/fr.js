@@ -101,7 +101,7 @@ export const fr = {
             user_roles: {
                 no: 'Aucun rôle',
                 reader: 'Lecteur',
-                author: 'Auteur',
+                producer: 'Producteur',
                 admin: 'Administrateur'
             },
             password_not_identical: 'Les mots de passe ne sont pas identiques',

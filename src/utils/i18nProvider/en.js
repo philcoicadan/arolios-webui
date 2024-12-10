@@ -100,7 +100,7 @@ export const en = {
             user_roles: {
                 no: 'No role',
                 reader: 'Reader',
-                author: 'Author',
+                producer: 'Producer',
                 admin: 'Administrator'
             },
             password_not_identical: 'The passwords are not identical',

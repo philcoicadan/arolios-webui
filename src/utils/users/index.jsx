@@ -5,7 +5,7 @@ export const roleChoices = () => {
     return  [
     { id: 'no', name: 'arolios.user_roles.no'},
     { id: 'reader', name: 'arolios.user_roles.reader'},
-    { id: 'author', name: 'arolios.user_roles.author'},
+    { id: 'producer', name: 'arolios.user_roles.producer'},
     { id: 'admin', name: 'arolios.user_roles.admin'}
  ]
     
@@ -19,7 +19,7 @@ export const RenderRole = ( (record)  => {
       
         no: translate('arolios.user_roles.no'),
         reader: translate('arolios.user_roles.reader'),
-        author: translate('arolios.user_roles.author'),
+        producer: translate('arolios.user_roles.producer'),
         admin: translate('arolios.user_roles.admin')
     }
      return roles[record.role];

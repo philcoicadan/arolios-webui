@@ -205,11 +205,43 @@ const CustomDataProvider = {
                 }
                 url += `${resource}/${instid}`;
                 return httpClient(url).then(({ headers, json }) => ({
-                    data: json.map(record => ( {id:record.url, ...record})),
+                    data: json.map(record => ( {id:idFromURL(record.url), ...record})),
                     total: 1,
                 }));
             }
-        } else { // no case implemented
+        } else if (getmany_context === "references" ) {
+            const ids = params.ids;
+            const instid =ids[0] ;
+            // variant of getOne
+            const lang = localStorage.getItem ("arolios_model_language") || sessionStorage.getItem ("arolios_model_default_language");
+            let query = `?lang=${lang}`;
+            const querySep = '&';
+            const {prefix, suffix ,context } = params.meta || {};
+            
+            let url = `${apiUrl}/`;
+
+            // suffix of the list query is the resource
+
+            if (suffix) {
+                url += `${suffix}`;
+            }
+    
+            url += `/${instid}`;
+            if (context) {
+                query += `${querySep}c=${context}`;
+            }
+            
+            if (query.length >0) {
+                url += `${query}`;
+            }
+    
+            
+            return httpClient(url).then(({ json }) => ({
+                    data: [ json ],
+                    total: 1
+                }));
+             
+        } else  { // no case implemented
             const query = {
                 filter: JSON.stringify({ ids: params.ids }),
             };

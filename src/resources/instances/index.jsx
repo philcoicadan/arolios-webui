@@ -1,15 +1,15 @@
-import {List, Datagrid,
+import {TextField, List, Datagrid,
     ShowButton, EditButton, Loading, Show, Edit, SimpleShowLayout, SimpleForm,
      Create, TopToolbar, ExportButton, CreateButton, SaveButton, Toolbar, DeleteWithConfirmButton, SearchInput, useTranslate, EmptyClasses} from 'react-admin';
 import { useContext} from "react";
-import { AssociationMemberEndContext, ClassifierContext, ClassSelectContext, ClassSelectProvider } from "../../utils/contexts";
+import { AssociationMemberEndContext, ClassifierContext } from "../../utils/contexts";
 import { useProperties } from "../../utils/properties";
 import { InsertShowField , InsertListField, InsertEditField, concatenateIdFields} from "../../utils/fields" ;
 import { useResourceContext, useResourceDefinition,  useRecordContext, useCreatePath, usePermissions} from "react-admin";
 import {  idFromURL, extractResourceFromPathName} from "../../utils/utils";
 import {useParams, useLocation} from "react-router-dom";
 
-import {Box, Drawer, Typography} from '@mui/material';
+import {Typography} from '@mui/material';
 import Inbox from '@mui/icons-material/Inbox';
 import { styled } from '@mui/material/styles';
 import authProvider from '../../utils/authProvider';
@@ -342,9 +342,9 @@ export const ClassInstanceList = () => {
         >
 
             {
-            classFunctions.unfoldProperties(properties).map ( ( prop ) => {
-                return InsertListField ( prop );
-    
+            classFunctions.unfoldProperties(properties).map ( ( {property, prefix} ) => {
+                return InsertListField  ( property, prefix);
+                
             } ) }
 
             <ClassInstanceListShowButton/>     
@@ -356,57 +356,6 @@ export const ClassInstanceList = () => {
 
     </List>)
 }
-
-
-const SelectActions = () => (
-    <TopToolbar></TopToolbar>
-);
-
-export const ClassInstanceSelect = () => {
-
-    const {resource, source, open, setOpen, setSourceSelect } = useContext(ClassSelectContext);
-
-    const {properties, loading} = useProperties (resource,'classes', 'list');
-
-    return (
-        <Drawer 
-        open={open}
-        anchor='right' 
-        onClose= { () => setOpen(false)}
-        sx={{ maxWidth: 1/2}}
-         >   
-
-    <List disableSyncWithLocation resource={resource} actions={<SelectActions />} filters={classFilters(properties, loading)} exporter={false} sort={{ field: 'id', order:"DESC"}} queryOptions={{ meta:{ prefix: 'classes', suffix: 'instances', properties: 'list'}}}>
-   {loading ? (
-        <Loading />
-    ) : (
-        <Datagrid 
-            bulkActionButtons={false}
-
-            rowClick= {(id, resource, record) => {
-                setSourceSelect(source, { id: record.id, display: concatenateIdFields(record)});
-                setOpen(false);
-
-              }
-
-         }
-        
-            >
-
-            {
-            classFunctions.unfoldPropertiesNoLink(properties).map ( ( prop ) => {
-                return InsertListField ( prop );
-    
-            } ) }
-
-        </Datagrid>
-           )
-        }
-    </List>
-    </Drawer>)
-}
-
-
 
 
 export const AssociationInstanceList = () => {
@@ -433,9 +382,8 @@ export const AssociationInstanceList = () => {
             >
 
             {
-            assocFunctions.unfoldProperties(properties).map ( ( prop ) => {
-                return InsertListField ( prop );
-    
+            assocFunctions.unfoldProperties(properties).map ( ( {property, prefix} ) => {
+                return InsertListField  ( property, prefix);
             } ) }
 
             <ShowButton/>
@@ -455,8 +403,8 @@ return (
        
 
             {
-            classFunctions.unfoldProperties(properties).map ( ( prop ) => {
-                    return InsertShowField (prop);
+            classFunctions.unfoldProperties(properties).map ( ( {property, prefix} ) => {
+                    return InsertShowField  ( property, prefix);
             } ) }
             
  
@@ -514,8 +462,8 @@ export const AssocInstanceShow = () => {
                     <SimpleShowLayout>
 
                         {
-                            assocFunctions.unfoldProperties(properties).map((prop) => {
-                                return InsertShowField(prop);
+                            assocFunctions.unfoldProperties(properties).map(({property, prefix}) => {
+                                return InsertShowField  ( property, prefix);
                             })}
 
 
@@ -527,11 +475,10 @@ export const AssocInstanceShow = () => {
 }
 
 const EditToolbar = () => {
-    const { saveEnable } = useContext(ClassSelectContext);
     const translate = useTranslate();
     return (
         <Toolbar>
-            <SaveButton alwaysEnable={saveEnable} />
+            <SaveButton  />
             <DeleteWithConfirmButton
                 resource='instances'
                 confirmContent={translate('arolios.delete_confirm_msg')}
@@ -544,150 +491,134 @@ const EditToolbar = () => {
 
 export const ClassInstanceEdit = () => {
 
-    const resource = useResourceContext ();
+    const resource = useResourceContext();
     const createPath = useCreatePath();
+    const { classifierNames } = useContext(ClassifierContext);
+    const csf_name = classifierNames[resource];
+    const translate = useTranslate();
 
-    const {properties, loading} = useProperties (resource, 'classes', 'update');
+    const { properties, loading } = useProperties(resource, 'classes', 'update');
     return (
-        <Box display="flex">
-        <ClassSelectProvider>
-            <Edit resource='instances' queryOptions={{ meta:{ context: 'rfu'}}} redirect={createPath( {resource: resource, type: 'list'})}>
+
+        <Edit title={translate('arolios.instance_of', { type: csf_name })} resource='instances' queryOptions={{ meta: { context: 'rfu' } }} redirect={createPath({ resource: resource, type: 'list' })}>
 
             {loading ? (
                 <Loading />
             ) : (
                 <div>
-                <SimpleForm toolbar= {<EditToolbar />}>
+                    <SimpleForm toolbar={<EditToolbar />}>
 
-                    {
-                    
-                    classFunctions.unfoldAllProperties(properties).map ( ( prop ) => {
-                        return InsertEditField ( prop );
-                    } ) }  
+                        {
 
-                </SimpleForm>
+                            classFunctions.unfoldAllProperties(properties).map(({ property, prefix }) => {
+                                return InsertEditField(property, prefix);
+                            })}
+
+                    </SimpleForm>
                 </div>
-            ) }
-        
-            </Edit>
+            )}
 
-            <ClassInstanceSelect />
-
-    
-    </ClassSelectProvider>
-    </Box>)
+        </Edit>
+    )
 }
 
 
 export const AssocInstanceEdit = () => {
-    const resource = useResourceContext ();
+    const resource = useResourceContext();
     const createPath = useCreatePath();
 
-    const {properties, loading} = useProperties (resource, 'associations', 'update');
+    const { properties, loading } = useProperties(resource, 'associations', 'update');
+
+    const { classifierNames } = useContext(ClassifierContext);
+    const csf_name = classifierNames[resource];
+    const translate = useTranslate();
+
     return (
-    
-    <Box display="flex">
-    <ClassSelectProvider>
-    <Edit  resource='instances' queryOptions={{ meta:{ context: 'rfu'}}} redirect={createPath( {resource: resource, type: 'list'})}>
- 
-    {loading ? (
-        <Loading />
-    ) : (
-    <SimpleForm toolbar= {<EditToolbar />}>
 
-        {
-        assocFunctions.unfoldNotRefProperties(properties).map ( ( prop ) => {
-                return InsertEditField ( prop );
-        } ) }
-          
+        <Edit title={translate('arolios.instance_of', { type: csf_name })} resource='instances' queryOptions={{ meta: { context: 'rfu' } }} redirect={createPath({ resource: resource, type: 'list' })}>
 
-    </SimpleForm>
-    ) }
-   
-    </Edit>
-    <ClassInstanceSelect />
+            {loading ? (
+                <Loading />
+            ) : (
+                <SimpleForm toolbar={<EditToolbar />}>
 
-    
-    </ClassSelectProvider>
-    </Box>)
-    
-    
-}
+                    {
+                        assocFunctions.unfoldNotRefProperties(properties).map(({ property, prefix }) => {
+                            return InsertEditField(property, prefix);
+                        })}
 
 
-const CreateToolbar = () => {
-    const { saveEnable } = useContext(ClassSelectContext);
-    return (
-        <Toolbar>
-            <SaveButton alwaysEnable={saveEnable} />
-        </Toolbar>
+                </SimpleForm>
+            )}
+
+        </Edit>
     )
+
+
 }
 
 export const ClassInstanceCreate = () => {
-    const resource = useResourceContext ();
+    const resource = useResourceContext();
 
-    const {properties, loading} = useProperties (resource, 'classes', 'create');
+    const { properties, loading } = useProperties(resource, 'classes', 'create');
+    const { classifierNames } = useContext(ClassifierContext);
+    const csf_name = classifierNames[resource];
+    const translate = useTranslate();
+
     return (
-        <Box display="flex">
-        <ClassSelectProvider>
-            <Create  redirect='show' mutationOptions={{ meta:{ prefix: 'classes', suffix: 'instances'}} }>
+
+        <Create title={translate('arolios.instance_of', { type: csf_name })} redirect='show' mutationOptions={{ meta: { prefix: 'classes', suffix: 'instances' } }}>
             {loading ? (
                 <Loading />
             ) : (
                 <div>
-                <SimpleForm toolbar= {<CreateToolbar />}>
-                    
-                    {
-                    
-                    classFunctions.unfoldAllProperties(properties).map ( ( prop ) => {
-                        return InsertEditField ( prop );
-                    } ) }  
+                    <SimpleForm>
 
-                </SimpleForm>
+                        {
+
+                            classFunctions.unfoldAllProperties(properties).map(({ property, prefix }) => {
+                                return InsertEditField(property, prefix);
+                            })}
+
+                    </SimpleForm>
                 </div>
-            ) }
-        
-            </Create>
+            )}
 
-            <ClassInstanceSelect />
+        </Create>
 
-    
-    </ClassSelectProvider>
-    </Box>)
+    )
 }
 
 export const AssocInstanceCreate = () => {
-    const resource = useResourceContext ();
+    const resource = useResourceContext();
 
-    const {properties, loading} = useProperties (resource, 'associations', 'create');
+    const { properties, loading } = useProperties(resource, 'associations', 'create');
+
+    const { classifierNames } = useContext(ClassifierContext);
+    const csf_name = classifierNames[resource];
+    const translate = useTranslate();
+
     return (
-        <Box display="flex">
-        <ClassSelectProvider>
-            <Create redirect='show' mutationOptions={{ meta:{ prefix: 'associations', suffix: 'instances' }} }>
+
+        <Create title={translate('arolios.instance_of', { type: csf_name })} redirect='show' mutationOptions={{ meta: { prefix: 'associations', suffix: 'instances' } }}>
             {loading ? (
                 <Loading />
             ) : (
                 <div>
-                <SimpleForm toolbar= {<CreateToolbar />}>
-                    
-                    {
-                    
-                    assocFunctions.unfoldAllProperties(properties).map ( ( prop ) => {
-                        return InsertEditField ( prop );
-                    } ) }  
+                    <SimpleForm>
 
-                </SimpleForm>
+                        {
+
+                            assocFunctions.unfoldAllProperties(properties).map(({ property, prefix }) => {
+                                return InsertEditField(property, prefix);
+                            })}
+
+                    </SimpleForm>
                 </div>
-            ) }
-        
-            </Create>
+            )}
 
-            <ClassInstanceSelect />
-
-    
-    </ClassSelectProvider>
-    </Box>)
+        </Create>
+    )
 }
 
 
@@ -720,8 +651,8 @@ export const InstanceAssocList = () => {
 
         { 
      
-            assocFunctions.unfoldProperties(properties).map ( ( prop ) => {
-                return InsertListField ( prop );
+            assocFunctions.unfoldProperties(properties).map ( ( {property,prefix }) => {
+                return InsertListField  ( property, prefix);
             
         } ) } 
         <ShowButton resource={assocResource}/>

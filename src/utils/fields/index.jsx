@@ -1,5 +1,5 @@
 import  * as React from "react";
-import { DateField, NumberField, RichTextField, BooleanField, EmailField, UrlField, TextField, WrapperField, Loading, NumberInput, BooleanInput, DateInput, TextInput, PasswordInput, ReferenceInput, SelectInput, useRecordContext, useShowContext, useEditContext, DateTimeInput } from "react-admin";
+import { DateField, NumberField, RichTextField, BooleanField, EmailField, UrlField, TextField, WrapperField, Loading, NumberInput, BooleanInput, DateInput, TextInput, PasswordInput, ReferenceInput, SelectInput, useRecordContext, useShowContext, useEditContext, DateTimeInput, AutocompleteInput } from "react-admin";
 import { RichTextInput } from "ra-input-rich-text";
 import { email, required } from "react-admin";
 import {Typography} from '@mui/material';
@@ -62,13 +62,14 @@ const MemberEndShowButton = ( {resource, resourceDisplay, prefix, field, sx }) =
 
     return <MUI.Link  component="button"  variant="body2" onClick={handleClick} sx={sx}><IconLink/></MUI.Link> ;
 }
-export const concatenateIdFields = ( record ) => {
+
+export const concatenateIdFieldValues = ( record ) => {
     let allIdFields = "" ;
     for (const [key, value] of Object.entries(record.properties)) {
         if (key[0] !== '_') {
             if (value instanceof Object) {
                 if (value.hasOwnProperty("properties")) { // linked prop
-                    allIdFields= allIdFields.concat(" ", concatenateIdFields(record['properties'][key]));
+                    allIdFields= allIdFields.concat(" ", concatenateIdFieldValues(record['properties'][key]));
                 } else { // composite prop  
                     for (const [key2, value2] of Object.entries(record['properties'][key])) {
                         if (key2 !== 'url' && !(value2 instanceof Object)) {
@@ -85,85 +86,18 @@ export const concatenateIdFields = ( record ) => {
     return allIdFields;
 }
 
-const DisplayLink = ( {display, record, resource, resourceDisplay, prefix, field, sx} ) => {
-    if (display) {
-        if ( record == null) {
-            return <CheckIcon/>
-        } else {
-            return <MemberEndShowButton resource={resource} resourceDisplay={resourceDisplay} prefix={prefix} field={field} sx={ {paddingTop: 2}} /> 
 
-        }
-    } else {
-        return <p></p>
-    }
+const MemberEndEditField = ( {property, prefix, field  }) => {
+    const resource = property['type']['id_name'];
+    const filterToQuery = searchText => ({ _s: `%${searchText}%`});
+
+    return (
+        <ReferenceInput reference={resource}  source={`${prefix}.${field}.id`} sort={{ field: 'id', order:"DESC"}} queryOptions={{ meta:{ getmany_context: 'references', prefix: 'classes', suffix: 'instances', properties: 'list'}}}>
+            <AutocompleteInput  label={property._tpathname} optionText={concatenateIdFieldValues} filterToQuery={filterToQuery} validate={validateRequired(property.required)} />
+        </ReferenceInput>
+    )
+    
 }
-
-const MemberEndEditButton = ( {property, prefix, field  }) => {
-    const {record} = useEditContext();
-    const source = `${prefix}.${field}`;
-    const resource = property['type']['id_name']
-    const resourceDisplay = property['type']['_tid_name']
-    const {setResource, setSource, setOpen, select , setSaveEnable} = useContext(ClassSelectContext);
-    const {setValue} = useFormContext();
-    const [displayLink, setDisplayLink] = useState (false);
-    const {mapClassifierNameResource} = useContext(ClassifierContext);
-
-
-    const handleClick = () => {
-        mapClassifierNameResource (
-            resource,
-            resourceDisplay
-        )
-        setResource(resource);
-        setSource(source);
-        setOpen(true);
-    };
-
-    const displayValue = ( value) => {
-        if (value == null || value === '') {
-            setDisplayLink(false);
-            return '';
-        } else {
-            setDisplayLink(true);
-
-            if (select == null ) {
-                return '';
-            } else {
-                if ( select[source]== null) {
-                    return '';
-                } else {
-                    return select[source]["display"];
-                }
-            }
-        }
-        ;
-    }
-
-    useEffect ( () => {
-    if (select.hasOwnProperty(source)) {
-        setValue(`${source}.id`, select[source]["id"]);
-        setSaveEnable(true);
-    }
-}, [select]) ;
-        return (
-            <Grid container spacing={2}> 
-                <Grid item xs={12} sm={8}>
-                    <TextInput label={property._tpathname} source={`${source}.id`} format={displayValue} disabled={true} validate={validateRequired(property.required)}/>
-                </Grid>
-                <Grid item xs={12} sm={2}>
-                   <DisplayLink display={displayLink} record={record} resource={resource} resourceDisplay={resourceDisplay} prefix={prefix} field={field} sx={ {paddingTop: 2}} />
-                </Grid>
-                <Grid item xs={12} sm={2}>
-                    <IconButton  type="button"  variant="outlined" onClick={handleClick} sx={ {paddingTop: 2}}>
-                        <SearchIcon/>
-                    </IconButton>
-                </Grid>
-            </Grid>
-        );
-   
-}
-
-
 
 
 const MemberEndListField = ({ label, prefix, field, classifier, classifierDisplay }) => (
@@ -204,6 +138,16 @@ export const InsertOutputClassMemberEnd = ({ property, prefix, field }) => {
             property['memberEnd']['association']['_tid_name']
         );
     }
+
+
+    const handleClick1 = () => {
+        mapClassifierNameResource(assocResource, property['memberEnd']['association']['_tid_name'])
+    }
+
+    const handleClick2 = () => {
+        mapClassifierNameResource(property['type']['id_name'], property['type']['_tid_name']);
+    }
+
     if (isLoading) return (<Loading />);
 
     if (record[prefix][field] == null) {
@@ -212,12 +156,12 @@ export const InsertOutputClassMemberEnd = ({ property, prefix, field }) => {
     if (record[prefix][field].hasOwnProperty('association')) {
         if (record[prefix][field]['association'].hasOwnProperty('instance_url')) {
             const id = idFromURL (record[prefix][field]['association']['instance_url']) // memberEnd  with association info => association to be shown
-            return <Link to={createPath({ resource: assocResource, type: 'show', id: id })} onClick={mapClassifierNameResource(assocResource, property['memberEnd']['association']['_tid_name'])}>{property._tpathname}</Link>
+            return <Link to={createPath({ resource: assocResource, type: 'show', id: id })} onClick={handleClick1}>{property._tpathname}</Link>
         }
     }
     if (record[prefix][field].hasOwnProperty('url')) { // memberEnd with ONE instance value => show instance
         const id = idFromURL (record[prefix][field]['url']);
-        return <Link to={createPath({ resource: property['type']['id_name'], type: 'show', id: id })}  onClick={mapClassifierNameResource(property['type']['id_name'], property['type']['_tid_name'])}>{property._tpathname}</Link>
+        return <Link to={createPath({ resource: property['type']['id_name'], type: 'show', id: id })}  onClick={handleClick2}>{property._tpathname}</Link>
     } else { // no instance => query of associations from a class and a memberEnd 
        
         return <Link to={`/${classifierResource}/${record['id']}/association_ends/${property.id_name}`}  onClick={mapAssocProp}>{property._tpathname}</Link>;
@@ -225,11 +169,13 @@ export const InsertOutputClassMemberEnd = ({ property, prefix, field }) => {
 
 }
 
-export const InsertListField = ({property, prefix}) => {
+
+
+export const InsertListField = ( property, prefix) => {
 
     const source = `${prefix}.${property.id_name}`;
-    const typeResource = property.type.id_name
-    const typeResourceDisplay = property.type._tid_name
+    const typeResource = property.type.id_name;
+    const typeResourceDisplay = property.type._tid_name;
     switch (property.metatype) {
         case "_primitive": {
             const { classifier } = extractDomainClassifier (typeResource);
@@ -240,37 +186,40 @@ export const InsertListField = ({property, prefix}) => {
                 case "decimal":
                 case "real":
                 case "doubleprecision":
-                    return (<NumberField label={property._tpathname} source={source} />);
+                    return (<NumberField key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source} />);
                 case "boolean":
-                    return (<BooleanField label={property._tpathname} source={source} valueLabelTrue="arolios.true" valueLabelFalse="arolios.false"/>);
+                    return (<BooleanField key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source} valueLabelTrue="arolios.true" valueLabelFalse="arolios.false"/>);
                 case "text":
-                    return (<RichTextField label={property._tpathname} source={source} />);
+                    return (<RichTextField key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source} />);
                 case "date":
-                    return (<DateField label={property._tpathname} source={source} />);
+                    return (<DateField key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source} />);
                 case "email": //future use
-                    return (<EmailField label={property._tpathname} source={source} />);
+                    return (<EmailField key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source} />);
                 case "url": //future use
-                    return (<UrlField label={property._tpathname} source={source} />);
+                    return (<UrlField key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source} />);
                 default:
                     // charstring time timestamp timetz timestamptz
-                    return (<TextField label={property._tpathname} source={source} />);
+                    return (
+                        <TextField key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source} />
+                    );
+                
 
             };
             }
         case "_enumeration":
-            return (<TextField label={property._tpathname} source={source} />);
+            return (<TextField key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source} />);
 
         case "_composite_type":
             break;
         case "_class":
-            return (<MemberEndListField label={property._tpathname} prefix={prefix} field={property.id_name} classifier={typeResource} classifierDisplay={typeResourceDisplay} />)
+            return (<MemberEndListField key={`${prefix}.${property.id_name}`} label={property._tpathname} prefix={prefix} field={property.id_name} classifier={typeResource} classifierDisplay={typeResourceDisplay} />)
         
 
         default:
-            return (<TextField label={property._tpathname} source={source} />);
+            return (<TextField key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source} />);
     }
 };
-export const InsertShowField = ({property, prefix}) => {
+export const InsertShowField = (property, prefix) => {
     const source = `${prefix}.${property.id_name}`;
     
     switch (property.metatype) {
@@ -283,38 +232,41 @@ export const InsertShowField = ({property, prefix}) => {
                 case "decimal":
                 case "real":
                 case "doubleprecision":
-                    return (<NumberField label={property._tpathname} source={source} />);
+                    return (<NumberField key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source} />);
                 case "boolean":
-                    return (<BooleanField label={property._tpathname} source={source} valueLabelTrue="arolios.true" valueLabelFalse="arolios.false"/>);
+                    return (<BooleanField key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source} valueLabelTrue="arolios.true" valueLabelFalse="arolios.false"/>);
                 case "text":
-                    return (<RichTextField label={property._tpathname} source={source} />);
+                    return (<RichTextField key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source} />);
                 case "date":
-                    return (<DateField label={property._tpathname} source={source} />);
+                    return (<DateField key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source} />);
                 case "email": //future use
-                    return (<EmailField label={property._tpathname} source={source} />);
+                    return (<EmailField key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source} />);
                 case "url": //future use
-                    return (<UrlField label={property._tpathname} source={source} />);
+                    return (<UrlField key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source} />);
                 default:
                     // charstring time timestamp timetz timestamptz
-                    return (<TextField label={property._tpathname} source={source} />);
-
+                    return (
+                                <TextField key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source} />
+                           );
             };
             }
         case "_enumeration":
-            return (<TextField label={property._tpathname} source={source} />);
+            return (<TextField key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source} />);
 
         case "_composite_type":
 
             break;
         case "_class":
-            return (<InsertOutputClassMemberEnd property={property} prefix={prefix} field={property.id_name} />)
+            return (<InsertOutputClassMemberEnd key={`${prefix}.${property.id_name}`} property={property} prefix={prefix} field={property.id_name} />)
 
         default:
-            return (<TextField label={property._tpathname} source={source} />);
+            return (
+                <TextField  key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source} />
+           );
     }
 };
 
-export const InsertEditField = ({property, prefix}) => {
+export const InsertEditField = (property, prefix) => {
     const source = `${prefix}.${property.id_name}`;
     switch (property.metatype) {
         case "_primitive": {
@@ -322,39 +274,39 @@ export const InsertEditField = ({property, prefix}) => {
             switch (classifier) {
                 case "charstring":
 
-                return (<TextInput label={property._tpathname} source={source} multiline fullWidth resettable validate={validateText(property.required)} />);
+                return (<TextInput key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source} multiline fullWidth resettable validate={validateText(property.required)} />);
                 case "integer":
                 case "smallint":
                 case "bigint":
                 case "real":
                 case "doubleprecision":
-                    return (<NumberInput label={property._tpathname} source={source} validate={validateNumber(property.required)} />);
+                    return (<NumberInput key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source} validate={validateNumber(property.required)} />);
                 case "decimal": // decimal : display as number, capture as text for keeping exact value in server
-                    return (<TextInput label={property._tpathname} source={source} resettable  validate={validateDecimal(property.required)} />);
+                    return (<TextInput key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source} resettable  validate={validateDecimal(property.required)} />);
                 case "boolean":
-                    return (<BooleanInput label={property._tpathname} source={source} validate={validateBoolean(property.required)} />);
+                    return (<BooleanInput key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source} validate={validateBoolean(property.required)} />);
                 case "text":
-                    return (<RichTextInput label={property._tpathname} source={source} validate={validateRichText(property.required)} />);
+                    return (<RichTextInput key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source} validate={validateRichText(property.required)} />);
                 case "date":
-                    return (<DateInput label={property._tpathname} source={source} validate={validateDate(property.required)} />);
+                    return (<DateInput key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source} validate={validateDate(property.required)} />);
                 case "time":
-                    return (<TextInput label={property._tpathname} source={source} validate={validateTime(property.required)} />);
+                    return (<TextInput key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source} validate={validateTime(property.required)} />);
                 case "timetz":
-                    return (<TextInput label={property._tpathname} source={source} validate={validateTimetz(property.required)} />);
+                    return (<TextInput key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source} validate={validateTimetz(property.required)} />);
                 case "timestamp":
-                    return (<DateTimeInput label={property._tpathname} source={source} validate={validateTimestamp(property.required)} />);
+                    return (<DateTimeInput key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source} validate={validateTimestamp(property.required)} />);
                 case "timestamptz":
-                    return (<DateTimeInput label={property._tpathname} source={source} validate={validateTimestamptz(property.required)} />);
+                    return (<DateTimeInput key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source} validate={validateTimestamptz(property.required)} />);
                 case "email": //future use
                     return (<TextInput label={property._tpathname} source={source} type="email" multiline fullWidth resettable validate={validateEmail(property.required)} />);
                 case "url": //future use
-                    return (<TextInput label={property._tpathname} source={source} type="url" multiline fullWidth resettable validate={validateUrl(property.required)} />);
+                    return (<TextInput key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source} type="url" multiline fullWidth resettable validate={validateUrl(property.required)} />);
                 case "password": //future use
-                    return (<PasswordInput label={property._tpathname} source={source} multiline fullWidth resettable validate={validatePassword(property.required)} />);
+                    return (<PasswordInput key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source} multiline fullWidth resettable validate={validatePassword(property.required)} />);
 
                 default:
                     // charstring 
-                    return (<TextInput label={property._tpathname} source={source} multiline fullWidth resettable />);
+                    return (<TextInput key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source} multiline fullWidth resettable />);
 
             };
          }
@@ -362,7 +314,7 @@ export const InsertEditField = ({property, prefix}) => {
             const typeResource=property.type.id_name;
 
             return (
-            <ReferenceInput source={source} reference={typeResource} sort={{field: 'name', order: 'ASC'}} queryOptions={{ meta:{ prefix: 'enumerations', suffix: 'values', getmany_context:'values'}} }  >
+            <ReferenceInput key={`${prefix}.${property.id_name}`} source={source} reference={typeResource} sort={{field: 'name', order: 'ASC'}} queryOptions={{ meta:{ prefix: 'enumerations', suffix: 'values', getmany_context:'values'}} }  >
                 <SelectInput label={property._tpathname} optionText="_tname" optionValue="name" validate={validateEnum(property.required)}/>
             </ReferenceInput>
             ) 
@@ -372,12 +324,12 @@ export const InsertEditField = ({property, prefix}) => {
 
         case "_class": 
         
-                return (<MemberEndEditButton property={property} prefix={prefix} field={property.id_name}  />);
+                return (<MemberEndEditField key={`${prefix}.${property.id_name}`} property={property} prefix={prefix} field={property.id_name}  />);
             
                 
 
         default:
             //TODO error to be returned
-            return (<TextInput label={property._tpathname} source={source} />);
+            return (<TextInput key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source} />);
     }
 };
