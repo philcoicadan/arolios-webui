@@ -11,7 +11,7 @@ import CheckIcon from '@mui/icons-material/Check';
 import IconLink from '@mui/icons-material/Link'
 import * as MUI from '@mui/material';
 import { useContext } from "react";
-import { AssociationMemberEndContext, ClassSelectContext, ClassifierContext } from "../contexts";
+import { AssociationMemberEndContext, ClassifierContext } from "../contexts";
 import { useCreatePath} from "react-admin";
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from "react";

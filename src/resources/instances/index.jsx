@@ -1,10 +1,10 @@
-import {TextField, List, Datagrid,
+import { List, Datagrid,
     ShowButton, EditButton, Loading, Show, Edit, SimpleShowLayout, SimpleForm,
      Create, TopToolbar, ExportButton, CreateButton, SaveButton, Toolbar, DeleteWithConfirmButton, SearchInput, useTranslate, EmptyClasses} from 'react-admin';
 import { useContext} from "react";
 import { AssociationMemberEndContext, ClassifierContext } from "../../utils/contexts";
 import { useProperties } from "../../utils/properties";
-import { InsertShowField , InsertListField, InsertEditField, concatenateIdFields} from "../../utils/fields" ;
+import { InsertShowField , InsertListField, InsertEditField} from "../../utils/fields" ;
 import { useResourceContext, useResourceDefinition,  useRecordContext, useCreatePath, usePermissions} from "react-admin";
 import {  idFromURL, extractResourceFromPathName} from "../../utils/utils";
 import {useParams, useLocation} from "react-router-dom";

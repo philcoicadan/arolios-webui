@@ -1,5 +1,5 @@
 import * as React from "react";
-import {FunctionField, WrapperField, Edit, Toolbar, SaveButton, DeleteWithConfirmButton, ReferenceInput, SelectInput, Link, useCreatePath, useNotify, useRedirect, required, FileInput, FileField, TextInput, List, Datagrid, TextField, TopToolbar, Create, SimpleForm, CreateButton, EditButton, ListButton, useRecordContext} from 'react-admin';
+import {AutocompleteInput, FunctionField, WrapperField, Edit, Toolbar, SaveButton, DeleteWithConfirmButton, ReferenceInput, SelectInput, Link, useCreatePath, useNotify, useRedirect, required, FileInput, FileField, TextInput, List, Datagrid, TextField, TopToolbar, Create, SimpleForm, CreateButton, EditButton, ListButton, useRecordContext} from 'react-admin';
 import DomainIcon from '@mui/icons-material/Domain'
 import IconLink from '@mui/icons-material/Link'
 import PeopleIcon from '@mui/icons-material/People'
@@ -8,19 +8,8 @@ import { useTranslate } from "react-admin";
 import {useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import {useParams} from "react-router-dom";
-import { useEffect, useState, useContext } from "react";
-import {useFormContext} from 'react-hook-form';
-import { ClassSelectContext, ClassSelectProvider } from "../../utils/contexts";
-import { IconButton, Grid } from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
-import CheckIcon from '@mui/icons-material/Check';
-import {Box, Drawer} from '@mui/material';
 import {roleChoices, RenderRole} from '../../utils/users'
 import { idFromURL , backEndURL} from "../../utils/utils";
-
-
-
-
 
 
 const ALActions = ( { selection }) => {
@@ -249,132 +238,33 @@ export const AppList = (() => {
  })
 
 
- const DisplayAssocFlag = ( {display} ) => {
-    if (display) {
-            return <CheckIcon/>
 
-    } else {
-        return <p></p>
-    }
-}
-
- const AppAssocEditField = ( {source , label,  resource }) => {
-
-    const {setResource, setSource, setOpen, select , setSaveEnable} = useContext(ClassSelectContext);
-
-    const {setValue} = useFormContext();
-    const [displayAssocFlag, setDisplayAssocFlag] = useState (false);
- 
-
-    const handleClick = () => {
- 
-        setResource(resource);
-        setSource(source);
-        setOpen(true);
-    };
-
-    const displayValue = ( value) => {
-        if (value == null || value === '') {
-            setDisplayAssocFlag(false);
-            return '';
-        } else {
-            setDisplayAssocFlag(true);
-            return value;
-        }
-        
-    }
-
-    useEffect ( () => {
-    if (select.hasOwnProperty(source)) {
-        setValue(`${source}`, select[source]["id"]);
-
-        setSaveEnable(true);
-    }
-}, [select]) ;
-        return (
-            <Grid container spacing={2}> 
-                <Grid item xs={12} sm={8}>
-                    <TextInput label={label} source={`${source}`} format={displayValue} disabled={true} validate={required()}/>
-                </Grid>
-                <Grid item xs={12} sm={2}>
-                   <DisplayAssocFlag display={displayAssocFlag} />
-                </Grid>
-                <Grid item xs={12} sm={2}>
-                    <IconButton  type="button"  variant="outlined" onClick={handleClick} sx={ {paddingTop: 2}}>
-                        <SearchIcon/>
-                    </IconButton>
-                </Grid>
-            </Grid>
-        );
-   
-}
- const SelectActions = () => (
-    <TopToolbar></TopToolbar>
-);
-
-const UserSelect = () => {
-
-    const {resource, source, open, setOpen, setSourceSelect } = useContext(ClassSelectContext);
-
-
-    return (
-        <Drawer 
-        open={open}
-        anchor='right' 
-        onClose= { () => setOpen(false)}
-         >   
-
-    <List disableSyncWithLocation resource={resource} actions={<SelectActions />} exporter={false} sort={{ field: 'name', order:"DESC"}} queryOptions={{ meta:{ }}}> 
-   
-        <Datagrid 
-
-            bulkActionButtons={false}
-
-            rowClick= {(id, resource, record) => {
-                setSourceSelect(source, { id: record.id, display: record.id});
-                setOpen(false);
-
-              }
-
-         }
-        
-            >
-                <TextField source ="id" label="arolios.identifier"/>  
-
-        </Datagrid>
-
-    </List>
-    </Drawer>)
-}
 
 export const AppUserCreate = () => {
     const translate = useTranslate();
+    const filterToQuery = searchText => ({ _s: `%${searchText}%` });
     return (
-        <Box display="flex">
-        <ClassSelectProvider>
-            <Create  mutationOptions={{ meta:{  }} }>
 
-                <SimpleForm>
+        <Create mutationOptions={{ meta: {} }}>
 
-                    <ReferenceInput source='app' reference='apps' sort={{field: 'name', order: 'ASC'}} perPage={100} queryOptions={{ meta:{  getmany_context: 'appassocs'}} }>
-                        <SelectInput label={translate('resources.apps.name',1)} optionText="name" optionValue="name" validate={required()}/>
-                    </ReferenceInput>
-                    <AppAssocEditField source="user" label={translate('resources.users.name',1)} resource="users"/>
-                    <SelectInput label="arolios.user_role" source="role"  validate={required()}  choices={roleChoices()}/>
+            <SimpleForm>
 
-                    
+                <ReferenceInput source='app' reference='apps' sort={{ field: 'name', order: 'ASC' }} perPage={100} queryOptions={{ meta: { getmany_context: 'appassocs' } }}>
+                    <SelectInput label={translate('resources.apps.name', 1)} optionText="name" optionValue="name" validate={required()} />
+                </ReferenceInput>
 
-                </SimpleForm>
-              
-          
-        
-            </Create>
+                <ReferenceInput reference="users" source="user" sort={{ field: 'identifier', order: "ASC" }} queryOptions={{ meta: { getmany_context: 'appassocs' } }}>
+                    <AutocompleteInput label={translate('resources.users.name', 1)} optionText="identifier" optionValue="identifier" filterToQuery={filterToQuery} validate={required()} />
+                </ReferenceInput>
 
-            <UserSelect />
 
-    
-    </ClassSelectProvider>
-    </Box>)
+                <SelectInput label="arolios.user_role" source="role" validate={required()} choices={roleChoices()} />
+
+
+
+            </SimpleForm>
+        </Create>
+    )
 }
 
  export const AppDomainCreate = (() => {

@@ -197,7 +197,19 @@ const CustomDataProvider = {
             const instid =ids[0] ;
             if (resource === 'apps' || resource === 'domains') {
                 return Promise.resolve ( { data: [ { id: instid }]});
-            } else { // no case implemented
+            } else if (resource === 'users') {
+                const ids = params.ids;
+                const instid = ids[0];
+                // variant of getOne
+
+                const url = `${apiUrl}/${resource}/${instid}`;
+
+                return httpClient(url).then(({ json }) => ({
+                    data: [ { id: json['identifier'], ...json} ],
+                    total: 1
+                }));
+
+            } else    { // no case implemented
 
                 let url = `${apiUrl}/`;
                 if (prefix) {
