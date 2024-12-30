@@ -1,6 +1,7 @@
 import { List, Datagrid,
     ShowButton, EditButton, Loading, Show, Edit, SimpleShowLayout, SimpleForm,
-     Create, TopToolbar, ExportButton, CreateButton, SaveButton, Toolbar, DeleteWithConfirmButton, SearchInput, useTranslate, EmptyClasses} from 'react-admin';
+     Create, TopToolbar, ExportButton, CreateButton, SaveButton, Toolbar, DeleteWithConfirmButton, SearchInput, useTranslate, EmptyClasses,
+     useRecordSelection} from 'react-admin';
 import { useContext} from "react";
 import { AssociationMemberEndContext, ClassifierContext } from "../../utils/contexts";
 import { useProperties } from "../../utils/properties";
@@ -219,7 +220,7 @@ const assocFunctions = {
 
 
 const classFilters = ( loading ) => {
-    if (loading) return [];
+   // if (loading) return [];
     const arr1 = [ <SearchInput source="_s" alwaysOn />]
 
     return arr1;
@@ -474,14 +475,14 @@ export const AssocInstanceShow = () => {
        )
 }
 
-const EditToolbar = () => {
+const EditToolbar = ( {type} ) => {
     const translate = useTranslate();
     return (
         <Toolbar>
             <SaveButton  />
             <DeleteWithConfirmButton
                 resource='instances'
-                confirmContent={translate('arolios.delete_confirm_msg')}
+                confirmTitle = {translate('arolios.delete_confirm_title', { name : type}) }
                 redirect='/'
             />
 
@@ -506,7 +507,7 @@ export const ClassInstanceEdit = () => {
                 <Loading />
             ) : (
                 <div>
-                    <SimpleForm toolbar={<EditToolbar />}>
+                    <SimpleForm toolbar={<EditToolbar type={csf_name} />}>
 
                         {
 

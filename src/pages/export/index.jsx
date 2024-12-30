@@ -50,7 +50,7 @@ const ExportData = () => {
         .then ( json => {
             notify ('arolios.export_success', {type: 'success', messageArgs: { title: `${data.query.title}`}});
             downloadJSON (JSON.stringify(json["elements"]), "export");
-            redirect (createPath( { resource: 'domains', type: 'list' }));
+            redirect ('/');
             return Promise.resolve();
         })
         .catch(() => {

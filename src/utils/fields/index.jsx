@@ -65,8 +65,9 @@ const MemberEndShowButton = ( {resource, resourceDisplay, prefix, field, sx }) =
 
 export const concatenateIdFieldValues = ( record ) => {
     let allIdFields = "" ;
+    let enumFields = [];
     for (const [key, value] of Object.entries(record.properties)) {
-        if (key[0] !== '_') {
+       // if (key[0] !== '_') {
             if (value instanceof Object) {
                 if (value.hasOwnProperty("properties")) { // linked prop
                     allIdFields= allIdFields.concat(" ", concatenateIdFieldValues(record['properties'][key]));
@@ -77,10 +78,13 @@ export const concatenateIdFieldValues = ( record ) => {
                         }
                     } 
                 }
-            } else {
+            } else if (key.startsWith ("_t") ){
+                allIdFields = allIdFields.concat(" ", String(value));
+                enumFields.push(key.substring(2));
+            } else if ( enumFields.indexOf( key ) === -1) {
                 allIdFields = allIdFields.concat(" ", String(value));
             }
-        }
+      // }
     }
     allIdFields = allIdFields.trim();
     return allIdFields;
@@ -207,8 +211,10 @@ export const InsertListField = ( property, prefix) => {
             };
             }
         case "_enumeration":
-            return (<TextField key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source} />);
-
+            {
+                const source_enum = `${prefix}._t${property.id_name}`;
+            return (<TextField key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source_enum} />);
+            }
         case "_composite_type":
             break;
         case "_class":
@@ -251,8 +257,10 @@ export const InsertShowField = (property, prefix) => {
             };
             }
         case "_enumeration":
-            return (<TextField key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source} />);
-
+            {
+                const source_enum = `${prefix}._t${property.id_name}`;
+                return (<TextField key={`${prefix}.${property.id_name}`} label={property._tpathname} source={source_enum} />);
+            }
         case "_composite_type":
 
             break;

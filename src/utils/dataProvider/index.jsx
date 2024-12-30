@@ -43,7 +43,11 @@ const CustomDataProvider = {
             querySep = '&';    
         }
         if (field) {
-            query +=`${querySep}s=${field}`;
+            //eliminate field translation 
+            const field_arr1 = field.split('.');
+            const field_arr2 = field_arr1.map ( (item) => ( item.startsWith ('_t')) ? item.substring(2) :  item);
+            const true_field = field_arr2.join('.');
+            query +=`${querySep}s=${true_field}`;
             querySep = '&';
         }
         if (order) {
@@ -316,7 +320,18 @@ const CustomDataProvider = {
     
             const {prefix, suffix ,context } = params.meta || {};
             if (prefix === 'settings') {
-                localStorage.setItem("arolios_model_language",  params.data.model_language);
+                localStorage.setItem("arolios_model_language",  params.data.model_language);          
+                
+                const url = `${apiUrl}/domains?lang=${params.data.model_language}`
+                httpClient(url).then(({ headers, json }) => {
+                    if (json["total"] === 1) {
+                        sessionStorage.setItem('arolios_model_default_domain', JSON.stringify({ name: json["elements"][0]['name'], _tname: json["elements"][0]['_tname'] }));
+                    } else {
+                        sessionStorage.removeItem('arolios_model_default_domain');
+                    };
+                    
+                });
+                        
                 return Promise.resolve({data: params.data});
             }
             let url = `${apiUrl}/`;

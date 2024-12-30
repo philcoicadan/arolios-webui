@@ -75,7 +75,7 @@ export const UserCreate = () => {
      
     return (
         
-            <Create>
+            <Create redirect="list">
         
                 <SimpleForm>
                     <TextInput label="arolios.user_identifier" source="identifier" multiline fullWidth resettable validate={required()}/>

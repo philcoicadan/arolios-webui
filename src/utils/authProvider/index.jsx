@@ -79,7 +79,7 @@ const authProvider = {
     },
 
     canEdit: (role) => {
-        return role === 'admin' || role === 'author' ;
+        return role === 'admin' || role === 'producer' ;
     }
 };
 
