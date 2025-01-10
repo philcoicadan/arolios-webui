@@ -568,7 +568,7 @@ export const ClassInstanceCreate = () => {
 
     return (
 
-        <Create title={translate('arolios.instance_of', { type: csf_name })} redirect='show' mutationOptions={{ meta: { prefix: 'classes', suffix: 'instances' } }}>
+        <Create title={translate('arolios.instance_of', { type: csf_name })} redirect='list' mutationOptions={{ meta: { prefix: 'classes', suffix: 'instances' } }}>
             {loading ? (
                 <Loading />
             ) : (
@@ -601,7 +601,7 @@ export const AssocInstanceCreate = () => {
 
     return (
 
-        <Create title={translate('arolios.instance_of', { type: csf_name })} redirect='show' mutationOptions={{ meta: { prefix: 'associations', suffix: 'instances' } }}>
+        <Create title={translate('arolios.instance_of', { type: csf_name })} redirect='list' mutationOptions={{ meta: { prefix: 'associations', suffix: 'instances' } }}>
             {loading ? (
                 <Loading />
             ) : (

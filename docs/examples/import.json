@@ -1,0 +1,2019 @@
+{
+    "import": [
+        {
+            "class": "library.writer",
+            "instance": "$w1",
+            "properties": {
+                "name": "Hugo",
+                "surname": "Hugo",
+                "first_name": "Victor"
+            }
+        },
+        {
+            "class": "library.writer",
+            "instance": "$w2",
+            "properties": {
+                "name": "Balzac",
+                "surname": "de Balzac",
+                "first_name": "Honoré"
+            }
+        },
+        {
+            "class": "library.writer",
+            "instance": "$w3",
+            "properties": {
+                "name": "Flaubert",
+                "surname": "Flaubert",
+                "first_name": "Gustave"
+            }
+        },
+        {
+            "class": "library.writer",
+            "instance": "$w4",
+            "properties": {
+                "name": "Stendhal",
+                "surname": "Beyle",
+                "first_name": "Henri"
+            }
+        },
+        {
+            "class": "library.writer",
+            "instance": "$w5",
+            "properties": {
+                "name": "Zola",
+                "surname": "Zola",
+                "first_name": "Emile"
+            }
+        },
+        {
+            "class": "library.writer",
+            "instance": "$w6",
+            "properties": {
+                "name": "George Sand",
+                "surname": "Dupin",
+                "first_name": "Amantine"
+            }
+        },
+        {
+            "class": "library.writer",
+            "instance": "$w7",
+            "properties": {
+                "name": "Baudelaire",
+                "surname": "Baudelaire",
+                "first_name": "Charles"
+            }
+        },
+        {
+            "class": "library.writer",
+            "instance": "$w8",
+            "properties": {
+                "name": "Verlaine",
+                "surname": "Verlaine",
+                "first_name": "Paul"
+            }
+        },
+        {
+            "class": "library.writer",
+            "instance": "$w9",
+            "properties": {
+                "name": "Rimbaud",
+                "surname": "Rimbaud",
+                "first_name": "Arthur"
+            }
+        },
+        {
+            "class": "library.writer",
+            "instance": "$w10",
+            "properties": {
+                "name": "Musset",
+                "surname": "de Musset",
+                "first_name": "Alfred"
+            }
+        },
+        {
+            "class": "library.writer",
+            "instance": "$w11",
+            "properties": {
+                "name": "Chateaubriand",
+                "surname": "de Chateaubriand",
+                "first_name": "François-René"
+            }
+        },
+        {
+            "class": "library.writer",
+            "instance": "$w12",
+            "properties": {
+                "name": "Lamartine",
+                "surname": "de Lamartine",
+                "first_name": "Alphonse"
+            }
+        },
+        {
+            "class": "library.writer",
+            "instance": "$w13",
+            "properties": {
+                "name": "E. Goncourt",
+                "surname": "Huot de Goncourt",
+                "first_name": "Edmond"
+            }
+        },
+        {
+            "class": "library.writer",
+            "instance": "$w14",
+            "properties": {
+                "name": "J. Goncourt",
+                "surname": "Huot de Goncourt",
+                "first_name": "Jules"
+            }
+        },
+        {
+            "class": "library.personal_info",
+            "instance": "$pi1",
+            "properties": {
+                "writer": { "id": "$w1" },
+                "birth_date": "1802-02-26",
+                "death_date": "1885-05-22"
+            }
+        },
+        {
+            "class": "library.personal_info",
+            "instance": "$pi2",
+            "properties": {
+                "writer": { "id": "$w2" },
+                "birth_date": "1799-05-20",
+                "death_date": "1850-08-18"
+            }
+        },
+        {
+            "class": "library.personal_info",
+            "instance": "$pi3",
+            "properties": {
+                "writer": { "id": "$w3" },
+                "birth_date": "1821-12-12",
+                "death_date": "1880-05-08"
+            }
+        },
+        {
+            "class": "library.personal_info",
+            "instance": "$pi4",
+            "properties": {
+                "writer": { "id": "$w4" },
+                "birth_date": "1783-01-23",
+                "death_date": "1842-03-23"
+            }
+        },
+        {
+            "class": "library.personal_info",
+            "instance": "$pi5",
+            "properties": {
+                "writer": { "id": "$w5" },
+                "birth_date": "1840-04-02",
+                "death_date": "1902-09-29",
+                "introduction": {
+                    "fr": "(Contenu soumis à la licence CC-BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/deed.fr) Source : Article Émile Zola de Wikipédia en français (https://fr.wikipedia.org/wiki/%C3%89mile_Zola). Extrait)\nÉmile Zola est un écrivain et journaliste français, né le 2 avril 1840 à Paris et mort le 29 septembre 1902 dans la même ville. Considéré comme le chef de file du naturalisme, c'est l'un des romanciers français les plus populaires et l'un des plus publiés, traduits et commentés dans le monde entier. Il a durablement marqué de son empreinte le monde littéraire français. Ses romans ont connu de très nombreuses adaptations au cinéma et à la télévision.",
+                    "en": "(Contenu soumis à la licence CC-BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/deed.fr) Source : Article Émile Zola de Wikipédia en anglais (https://en.wikipedia.org/wiki/%C3%89mile_Zola). Extrait).\nÉmile Édouard Charles Antoine Zola ( 2 April 1840 – 29 September 1902) was a French novelist, journalist, playwright, the best-known practitioner of the literary school of naturalism, and an important contributor to the development of theatrical naturalism. He was a major figure in the political liberalization of France and in the exoneration of the falsely accused and convicted army officer Alfred Dreyfus, which is encapsulated in his renowned newspaper opinion headlined J'Accuse…! Zola was nominated for the first and second Nobel prizes in literature in 1901 and 1902."
+                }
+            }
+        },
+        {
+            "class": "library.personal_info",
+            "instance": "$pi6",
+            "properties": {
+                "writer": { "id": "$w6" },
+                "birth_date": "1804-07-01",
+                "death_date": "1876-06-08",
+                "introduction" : {
+                    "fr": "(Contenu soumis à la licence CC-BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/deed.fr) Source : Article George Sand de Wikipédia en français (https://fr.wikipedia.org/wiki/George_Sand). Extrait).\nGeorge Sand, nom de plume d'Amantine Aurore Lucile Dupin de Francueil, par mariage baronne Dudevant, est une romancière, dramaturge, épistolière, critique littéraire et journaliste française, née le 1er juillet 1804 à Paris et morte le 8 juin 1876 au château de Nohant-Vic. Elle compte parmi les écrivains les plus prolifiques, avec plus de 70 romans à son actif et 50 volumes d'œuvres diverses dont des nouvelles, des contes, des pièces de théâtre et des textes politiques."}
+            }
+        },
+        {
+            "class": "library.personal_info",
+            "instance": "$pi7",
+            "properties": {
+                "writer": { "id": "$w7" },
+                "birth_date": "1821-04-09",
+                "death_date": "1867-08-31"
+            }
+        },
+        {
+            "class": "library.personal_info",
+            "instance": "$pi8",
+            "properties": {
+                "writer": { "id": "$w8" },
+                "birth_date": "1844-03-30",
+                "death_date": "1896-01-08"
+            }
+        },
+        {
+            "class": "library.personal_info",
+            "instance": "$pi9",
+            "properties": {
+                "writer": { "id": "$w9" },
+                "birth_date": "1854-10-20",
+                "death_date": "1891-11-10"
+            }
+        },
+        {
+            "class": "library.personal_info",
+            "instance": "$pi10",
+            "properties": {
+                "writer": { "id": "$w10" },
+                "birth_date": "1810-12-11",
+                "death_date": "1857-05-02"
+            }
+        },
+        {
+            "class": "library.personal_info",
+            "instance": "$pi11",
+            "properties": {
+                "writer": { "id": "$w11" },
+                "birth_date": "1768-09-04",
+                "death_date": "1848-07-04"
+            }
+        },
+        {
+            "class": "library.personal_info",
+            "instance": "$pi12",
+            "properties": {
+                "writer": { "id": "$w12" },
+                "birth_date": "1790-10-21",
+                "death_date": "1869-02-28"
+            }
+        },
+        {
+            "class": "library.personal_info",
+            "instance": "$pi13",
+            "properties": {
+                "writer": { "id": "$w13" },
+                "birth_date": "1822-05-26",
+                "death_date": "1896-07-16"
+            }
+        },
+        {
+            "class": "library.personal_info",
+            "instance": "$pi14",
+            "properties": {
+                "writer": { "id": "$w14" },
+                "birth_date": "1830-12-17",
+                "death_date": "1870-06-20"
+            }
+        },
+        {
+            "class": "library.registered_person",
+            "instance": "$rp1",
+            "properties": {
+                "id_number": 241201
+            }
+        },
+        {
+            "class": "library.registered_person",
+            "instance": "$rp2",
+            "properties": {
+                "id_number": 241202
+            }
+        },
+        {
+            "class": "library.registered_person",
+            "instance": "$rp3",
+            "properties": {
+                "id_number": 241203
+            }
+        },
+        {
+            "class": "library.registered_person",
+            "instance": "$rp4",
+            "properties": {
+                "id_number": 241204
+            }
+        },
+        {
+            "class": "library.registered_person",
+            "instance": "$rp5",
+            "properties": {
+                "id_number": 241205
+            }
+        },
+        {
+            "class": "library.registered_person",
+            "instance": "$rp6",
+            "properties": {
+                "id_number": 241206
+            }
+        },
+        {
+            "class": "library.registered_person",
+            "instance": "$rp7",
+            "properties": {
+                "id_number": 241207
+            }
+        },
+        {
+            "class": "library.registered_person",
+            "instance": "$rp8",
+            "properties": {
+                "id_number": 241208,
+                "first_name" : "Philippe",
+                "surname": "C"
+            }
+        },
+        {
+            "class": "library.registered_person",
+            "instance": "$rp9",
+            "properties": {
+                "id_number": 241209
+            }
+        },
+        {
+            "class": "library.registered_person",
+            "instance": "$rp10",
+            "properties": {
+                "id_number": 241210
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b1",
+            "properties": {
+                "title": "Odes et Ballades",
+                "kind": "poetry"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b2",
+            "properties": {
+                "title": "Les feuilles d’automne",
+                "kind": "poetry"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b3",
+            "properties": {
+                "title": "Les contemplations",
+                "kind": "poetry"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b4",
+            "properties": {
+                "title": "Les châtiments",
+                "kind": "poetry"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b5",
+            "properties": {
+                "title": "La légende des siècles",
+                "kind": "poetry"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b6",
+            "properties": {
+                "title": "Cromwell",
+                "kind": "play"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b7",
+            "properties": {
+                "title": "Hernani",
+                "kind": "play"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b8",
+            "properties": {
+                "title": "Lucrèce Borgia",
+                "kind": "play"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b9",
+            "properties": {
+                "title": "Ruy Blas",
+                "kind": "play"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b10",
+            "properties": {
+                "title": "Notre Dame de Paris",
+                "kind": "novel"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b11",
+            "properties": {
+                "title": "Les misérables",
+                "kind": "novel"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b12",
+            "properties": {
+                "title": "La Peau de chagrin",
+                "kind": "novel"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b13",
+            "properties": {
+                "title": "Le Lys dans la vallée",
+                "kind": "novel"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b14",
+            "properties": {
+                "title": "Eugénie Grandet",
+                "kind": "novel"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b15",
+            "properties": {
+                "title": "Le Père Goriot",
+                "kind": "novel"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b16",
+            "properties": {
+                "title": "Madame Bovary",
+                "kind": "novel"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b17",
+            "properties": {
+                "title": "L’éducation sentimentale",
+                "kind": "novel"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b18",
+            "properties": {
+                "title": "Le Rouge et le Noir",
+                "kind": "novel"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b19",
+            "properties": {
+                "title": "La Chartreuse de Parme",
+                "kind": "novel"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b20",
+            "properties": {
+                "title": "La Fortune des Rougon",
+                "kind": "novel"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b21",
+            "properties": {
+                "title": "La Curée",
+                "kind": "novel"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b22",
+            "properties": {
+                "title": "La Faute de l’abbé Mouret",
+                "kind": "novel"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b23",
+            "properties": {
+                "title": "L’Assommoir",
+                "kind": "novel"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b24",
+            "properties": {
+                "title": "Nana",
+                "kind": "novel"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b25",
+            "properties": {
+                "title": "Au bonheur des Dames",
+                "kind": "novel"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b26",
+            "properties": {
+                "title": "Germinal",
+                "kind": "novel"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b27",
+            "properties": {
+                "title": "La Terre",
+                "kind": "novel"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b28",
+            "properties": {
+                "title": "La bête humaine",
+                "kind": "novel"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b29",
+            "properties": {
+                "title": "L’argent",
+                "kind": "novel"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b30",
+            "properties": {
+                "title": "La Mare au Diable",
+                "kind": "novel"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b31",
+            "properties": {
+                "title": "La Petite Fadette",
+                "kind": "novel"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b32",
+            "properties": {
+                "title": "Les Maîtres sonneurs",
+                "kind": "novel"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b33",
+            "properties": {
+                "title": "Les Fleurs du mal",
+                "kind": "poetry"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b34",
+            "properties": {
+                "title": "Poèmes saturniens",
+                "kind": "poetry"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b35",
+            "properties": {
+                "title": "Fêtes galantes",
+                "kind": "poetry"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b36",
+            "properties": {
+                "title": "Poésies",
+                "kind": "poetry"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b37",
+            "properties": {
+                "title": "Les illuminations",
+                "kind": "poetry"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b38",
+            "properties": {
+                "title": "Une saison en enfer",
+                "kind": "poetry"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b39",
+            "properties": {
+                "title": "Cahier de Douai",
+                "kind": "poetry"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b40",
+            "properties": {
+                "title": "Lorenzaccio",
+                "kind": "play"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b41",
+            "properties": {
+                "title": "On ne badine pas avec l’amour",
+                "kind": "play"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b42",
+            "properties": {
+                "title": "Mémoires d’Outre-Tombe",
+                "kind": "autobiography"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b43",
+            "properties": {
+                "title": "Méditations poétiques",
+                "kind": "poetry"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b44",
+            "properties": {
+                "title": "Harmonies poétiques et religieuses",
+                "kind": "poetry"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b45",
+            "properties": {
+                "title": "Renée Mauperin",
+                "kind": "novel"
+            }
+        },
+        {
+            "class": "library.book",
+            "instance": "$b46",
+            "properties": {
+                "title": "Germinie Lacerteux",
+                "kind": "novel"
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a1",
+            "properties": {
+                "writers": { "id": "$w1" },
+                "books": { "id": "$b1"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a2",
+            "properties": {
+                "writers": { "id": "$w1" },
+                "books": { "id": "$b2"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a3",
+            "properties": {
+                "writers": { "id": "$w1" },
+                "books": { "id": "$b3"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a4",
+            "properties": {
+                "writers": { "id": "$w1" },
+                "books": { "id": "$b4"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a5",
+            "properties": {
+                "writers": { "id": "$w1" },
+                "books": { "id": "$b5"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a6",
+            "properties": {
+                "writers": { "id": "$w1" },
+                "books": { "id": "$b6"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a7",
+            "properties": {
+                "writers": { "id": "$w1" },
+                "books": { "id": "$b7"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a8",
+            "properties": {
+                "writers": { "id": "$w1" },
+                "books": { "id": "$b8"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a9",
+            "properties": {
+                "writers": { "id": "$w1" },
+                "books": { "id": "$b9"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a10",
+            "properties": {
+                "writers": { "id": "$w1" },
+                "books": { "id": "$b10"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a11",
+            "properties": {
+                "writers": { "id": "$w1" },
+                "books": { "id": "$b11"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a12",
+            "properties": {
+                "writers": { "id": "$w2" },
+                "books": { "id": "$b12"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a13",
+            "properties": {
+                "writers": { "id": "$w2" },
+                "books": { "id": "$b13"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a14",
+            "properties": {
+                "writers": { "id": "$w2" },
+                "books": { "id": "$b14"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a15",
+            "properties": {
+                "writers": { "id": "$w2" },
+                "books": { "id": "$b15"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a16",
+            "properties": {
+                "writers": { "id": "$w3" },
+                "books": { "id": "$b16"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a17",
+            "properties": {
+                "writers": { "id": "$w3" },
+                "books": { "id": "$b17"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a18",
+            "properties": {
+                "writers": { "id": "$w4" },
+                "books": { "id": "$b18"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a19",
+            "properties": {
+                "writers": { "id": "$w4" },
+                "books": { "id": "$b19"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a20",
+            "properties": {
+                "writers": { "id": "$w5" },
+                "books": { "id": "$b20"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a21",
+            "properties": {
+                "writers": { "id": "$w5" },
+                "books": { "id": "$b21"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a22",
+            "properties": {
+                "writers": { "id": "$w5" },
+                "books": { "id": "$b22"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a23",
+            "properties": {
+                "writers": { "id": "$w5" },
+                "books": { "id": "$b23"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a24",
+            "properties": {
+                "writers": { "id": "$w5" },
+                "books": { "id": "$b24"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a25",
+            "properties": {
+                "writers": { "id": "$w5" },
+                "books": { "id": "$b25"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a26",
+            "properties": {
+                "writers": { "id": "$w5" },
+                "books": { "id": "$b26"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a27",
+            "properties": {
+                "writers": { "id": "$w5" },
+                "books": { "id": "$b27"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a28",
+            "properties": {
+                "writers": { "id": "$w5" },
+                "books": { "id": "$b28"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a29",
+            "properties": {
+                "writers": { "id": "$w5" },
+                "books": { "id": "$b29"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a30",
+            "properties": {
+                "writers": { "id": "$w6" },
+                "books": { "id": "$b30"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a31",
+            "properties": {
+                "writers": { "id": "$w6" },
+                "books": { "id": "$b31"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a32",
+            "properties": {
+                "writers": { "id": "$w6" },
+                "books": { "id": "$b32"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a33",
+            "properties": {
+                "writers": { "id": "$w7" },
+                "books": { "id": "$b33"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a34",
+            "properties": {
+                "writers": { "id": "$w8" },
+                "books": { "id": "$b34"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a35",
+            "properties": {
+                "writers": { "id": "$w8" },
+                "books": { "id": "$b35"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a36",
+            "properties": {
+                "writers": { "id": "$w9" },
+                "books": { "id": "$b36"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a37",
+            "properties": {
+                "writers": { "id": "$w9" },
+                "books": { "id": "$b37"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a38",
+            "properties": {
+                "writers": { "id": "$w9"},
+                "books": { "id": "$b38"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a39",
+            "properties": {
+                "writers": { "id": "$w9"},
+                "books": { "id": "$b39"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a40",
+            "properties": {
+                "writers": { "id": "$w10"},
+                "books": { "id": "$b40"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a41",
+            "properties": {
+                "writers": { "id": "$w10"},
+                "books": { "id": "$b41"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a42",
+            "properties": {
+                "writers": { "id": "$w11"},
+                "books": { "id": "$b42"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a43",
+            "properties": {
+                "writers": { "id": "$w12"},
+                "books": { "id": "$b43"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a44",
+            "properties": {
+                "writers": { "id": "$w12"},
+                "books": { "id": "$b44"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a45",
+            "properties": {
+                "writers": { "id": "$w13"},
+                "books": { "id": "$b45"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a46",
+            "properties": {
+                "writers": { "id": "$w13"},
+                "books": { "id": "$b46"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a47",
+            "properties": {
+                "writers": { "id": "$w14"},
+                "books": { "id": "$b45"}
+            }
+        },
+        {
+            "association": "library.author",
+            "instance": "$a48",
+            "properties": {
+                "writers": { "id": "$w14"},
+                "books": { "id": "$b46"}
+            }
+        },
+        {
+            "association": "library.borrowing",
+            "instance": "$bo1",
+            "properties": {
+                "books": { "id": "$b1"},
+                "borrowers": { "id": "$rp1"},
+                "borrowing_date": "2024-10-01",
+                "return_date": "2024-10-15"
+            }
+        },
+        {
+            "association": "library.borrowing",
+            "instance": "$bo2",
+            "properties": {
+                "books": { "id": "$b2"},
+                "borrowers": { "id": "$rp2"},
+                "borrowing_date": "2024-10-01",
+                "return_date": "2024-10-15"
+            }
+        },
+        {
+            "association": "library.borrowing",
+            "instance": "$bo3",
+            "properties": {
+                "books": { "id": "$b5"},
+                "borrowers": { "id": "$rp3"},
+                "borrowing_date": "2024-10-01",
+                "return_date": "2024-10-15"
+            }
+        },
+        {
+            "association": "library.borrowing",
+            "instance": "$bo4",
+            "properties": {
+                "books": { "id": "$b6"},
+                "borrowers": { "id": "$rp6"},
+                "borrowing_date": "2024-10-02",
+                "return_date": "2024-10-16"
+            }
+        },
+        {
+            "association": "library.borrowing",
+            "instance": "$bo5",
+            "properties": {
+                "books": { "id": "$b9"},
+                "borrowers": { "id": "$rp7"},
+                "borrowing_date": "2024-10-03",
+                "return_date": "2024-10-17"
+            }
+        },
+        {
+            "association": "library.borrowing",
+            "instance": "$bo6",
+            "properties": {
+                "books": { "id": "$b10"},
+                "borrowers": { "id": "$rp8"},
+                "borrowing_date": "2024-10-18",
+                "return_date": "2024-10-28"
+            }
+        },
+        {
+            "association": "library.borrowing",
+            "instance": "$bo7",
+            "properties": {
+                "books": { "id": "$b13"},
+                "borrowers": { "id": "$rp9"},
+                "borrowing_date": "2024-10-05",
+                "return_date": "2024-10-19"
+            }
+        },
+        {
+            "association": "library.borrowing",
+            "instance": "$bo8",
+            "properties": {
+                "books": { "id": "$b14"},
+                "borrowers": { "id": "$rp10"},
+                "borrowing_date": "2024-10-06",
+                "return_date": "2024-10-20"
+            }
+        },
+        {
+            "association": "library.borrowing",
+            "instance": "$bo9",
+            "properties": {
+                "books": { "id": "$b17"},
+                "borrowers": { "id": "$rp1"},
+                "borrowing_date": "2024-10-01",
+                "return_date": "2024-10-15"
+            }
+        },
+        {
+            "association": "library.borrowing",
+            "instance": "$bo10",
+            "properties": {
+                "books": { "id": "$b18"},
+                "borrowers": { "id": "$rp2"},
+                "borrowing_date": "2024-10-15",
+                "return_date": "2024-10-29"
+            }
+        },
+        {
+            "association": "library.borrowing",
+            "instance": "$bo11",
+            "properties": {
+                "books": { "id": "$b21"},
+                "borrowers": { "id": "$rp3"},
+                "borrowing_date": "2024-10-15",
+                "return_date": "2024-10-29"
+            }
+        },
+        {
+            "association": "library.borrowing",
+            "instance": "$bo12",
+            "properties": {
+                "books": { "id": "$b22"},
+                "borrowers": { "id": "$rp4"},
+                "borrowing_date": "2024-11-06",
+                "return_date": "2024-11-16"
+            }
+        },
+        {
+            "association": "library.borrowing",
+            "instance": "$bo13",
+            "properties": {
+                "books": { "id": "$b25"},
+                "borrowers": { "id": "$rp5"},
+                "borrowing_date": "2024-11-06",
+                "return_date": "2024-11-20"
+            }
+        },
+        {
+            "association": "library.borrowing",
+            "instance": "$bo14",
+            "properties": {
+                "books": { "id": "$b26"},
+                "borrowers": { "id": "$rp8"},
+                "borrowing_date": "2024-10-04",
+                "return_date": "2024-10-18"
+            }
+        },
+
+        {
+            "association": "library.borrowing",
+            "instance": "$bo15",
+            "properties": {
+                "books": { "id": "$b29"},
+                "borrowers": { "id": "$rp9"},
+                "borrowing_date": "2024-10-19",
+                "return_date": "2024-10-29"
+            }
+        },
+        {
+            "association": "library.borrowing",
+            "instance": "$bo16",
+            "properties": {
+                "books": { "id": "$b30"},
+                "borrowers": { "id": "$rp10"},
+                "borrowing_date": "2024-10-20",
+                "return_date": "2024-10-30"
+            }
+        },
+        {
+            "association": "library.borrowing",
+            "instance": "$bo17",
+            "properties": {
+                "books": { "id": "$b33"},
+                "borrowers": { "id": "$rp1"},
+                "borrowing_date": "2024-10-15",
+                "return_date": "2024-10-29"
+            }
+        },
+        {
+            "association": "library.borrowing",
+            "instance": "$bo18",
+            "properties": {
+                "books": { "id": "$b34"},
+                "borrowers": { "id": "$rp2"},
+                "borrowing_date": "2024-12-11"
+            }
+        },
+        {
+            "association": "library.borrowing",
+            "instance": "$bo19",
+            "properties": {
+                "books": { "id": "$b37"},
+                "borrowers": { "id": "$rp3"},
+                "borrowing_date": "2024-10-29",
+                "return_date": "2024-11-10"
+            }
+        },
+        {
+            "association": "library.borrowing",
+            "instance": "$bo20",
+            "properties": {
+                "books": { "id": "$b38"},
+                "borrowers": { "id": "$rp4"},
+                "borrowing_date": "2024-11-06",
+                "return_date": "2024-11-16"
+            }
+        },
+        {
+            "association": "library.borrowing",
+            "instance": "$bo21",
+            "properties": {
+                "books": { "id": "$b41"},
+                "borrowers": { "id": "$rp5"},
+                "borrowing_date": "2024-11-16",
+                "return_date": "2024-11-30"
+            }
+        },
+        {
+            "association": "library.borrowing",
+            "instance": "$bo22",
+            "properties": {
+                "books": { "id": "$b42"},
+                "borrowers": { "id": "$rp6"},
+                "borrowing_date": "2024-10-02",
+                "return_date": "2024-10-16"
+            }
+        },
+        {
+            "association": "library.borrowing",
+            "instance": "$bo23",
+            "properties": {
+                "books": { "id": "$b45"},
+                "borrowers": { "id": "$rp7"},
+                "borrowing_date": "2024-10-17",
+                "return_date": "2024-10-30"
+            }
+        },
+        {
+            "association": "library.borrowing",
+            "instance": "$bo24",
+            "properties": {
+                "books": { "id": "$b46"},
+                "borrowers": { "id": "$rp8"},
+                "borrowing_date": "2024-10-28",
+                "return_date": "2024-11-10"
+            }
+        },
+        {
+            "association": "library.borrowing",
+            "instance": "$bo25",
+            "properties": {
+                "books": { "id": "$b1"},
+                "borrowers": { "id": "$rp5"},
+                "borrowing_date": "2024-11-30"
+            }
+        },
+        {
+            "association": "library.borrowing",
+            "instance": "$bo26",
+            "properties": {
+                "books": { "id": "$b2"},
+                "borrowers": { "id": "$rp6"},
+                "borrowing_date": "2024-10-16",
+                "return_date": "2024-10-30"
+            }
+        },
+        {
+            "association": "library.borrowing",
+            "instance": "$bo27",
+            "properties": {
+                "books": { "id": "$b5"},
+                "borrowers": { "id": "$rp7"},
+                "borrowing_date": "2024-10-30",
+                "return_date": "2024-11-12"
+            }
+        },
+        {
+            "association": "library.borrowing",
+            "instance": "$bo28",
+            "properties": {
+                "books": { "id": "$b26"},
+                "borrowers": { "id": "$rp8"},
+                "borrowing_date": "2024-12-11"
+            }
+        },
+        {
+            "association": "library.borrowing",
+            "instance": "$b29",
+            "properties": {
+                "books": { "id": "$b10"},
+                "borrowers": { "id": "$rp9"},
+                "borrowing_date": "2024-10-29",
+                "return_date": "2024-11-13"
+            }
+        },
+        {
+            "class": "library.room",
+            "instance": "$r1",
+            "properties": {
+                "name": "A"
+            }
+        },
+        {
+            "class": "library.room",
+            "instance": "$r2",
+            "properties": {
+                "name": "B"
+            }
+        },
+        {
+            "class": "library.room",
+            "instance": "$r3",
+            "properties": {
+                "name": "C"
+            }
+        },
+        {
+            "class": "library.shelving",
+            "instance": "$s1",
+            "properties": {
+                "number": 1,
+                "room": { "id": "$r1"}
+            }
+        },
+        {
+            "class": "library.shelving",
+            "instance": "$s2",
+            "properties": {
+                "number": 2,
+                "room": { "id": "$r1"}
+            }
+        },
+        {
+            "class": "library.shelving",
+            "instance": "$s3",
+            "properties": {
+                "number": 3,
+                "room": { "id": "$r1"}
+            }
+        },
+        {
+            "class": "library.shelving",
+            "instance": "$s4",
+            "properties": {
+                "number": 1,
+                "room": { "id": "$r2"}
+            }
+        },
+        {
+            "class": "library.shelving",
+            "instance": "$s5",
+            "properties": {
+                "number": 2,
+                "room": { "id": "$r2"}
+            }
+        },
+        {
+            "class": "library.shelving",
+            "instance": "$s6",
+            "properties": {
+                "number": 3,
+                "room": { "id": "$r2"}
+            }
+        },
+        {
+            "class": "library.shelving",
+            "instance": "$s7",
+            "properties": {
+                "number": 1,
+                "room": { "id": "$r3"}
+            }
+        },
+        {
+            "class": "library.shelving",
+            "instance": "$s8",
+            "properties": {
+                "number": 2,
+                "room": { "id": "$r3"}
+            }
+        },
+        {
+            "class": "library.shelving",
+            "instance": "$s9",
+            "properties": {
+                "number": 3,
+                "room": { "id": "$r3"}
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p1",
+            "properties": {
+                "books": { "id": "$b1"},
+                "shelving": { "id": "$s1"},
+                "position": {
+                    "shelf": 1,
+                    "place": 1
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p2",
+            "properties": {
+                "books": { "id": "$b2"},
+                "shelving": { "id": "$s1"},
+                "position": {
+                    "shelf": 1,
+                    "place": 2
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p3",
+            "properties": {
+                "books": { "id": "$b3"},
+                "shelving": { "id": "$s1"},
+                "position": {
+                    "shelf": 1,
+                    "place": 3
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p4",
+            "properties": {
+                "books": { "id": "$b4"},
+                "shelving": { "id": "$s1"},
+                "position": {
+                    "shelf": 1,
+                    "place": 4
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p5",
+            "properties": {
+                "books": { "id": "$b5"},
+                "shelving": { "id": "$s1"},
+                "position": {
+                    "shelf": 1,
+                    "place": 5
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p6",
+            "properties": {
+                "books": { "id": "$b6"},
+                "shelving": { "id": "$s1"},
+                "position": {
+                    "shelf": 1,
+                    "place": 6
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p7",
+            "properties": {
+                "books": { "id": "$b7"},
+                "shelving": { "id": "$s1"},
+                "position": {
+                    "shelf": 1,
+                    "place": 7
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p8",
+            "properties": {
+                "books": { "id": "$b8"},
+                "shelving": { "id": "$s1"},
+                "position": {
+                    "shelf": 1,
+                    "place": 8
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p9",
+            "properties": {
+                "books": { "id": "$b9"},
+                "shelving": { "id": "$s1"},
+                "position": {
+                    "shelf": 1,
+                    "place": 9
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p10",
+            "properties": {
+                "books": { "id": "$b10"},
+                "shelving": { "id": "$s1"},
+                "position": {
+                    "shelf": 1,
+                    "place": 10
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p11",
+            "properties": {
+                "books": { "id": "$b11"},
+                "shelving": { "id": "$s1"},
+                "position": {
+                    "shelf": 1,
+                    "place": 11
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p12",
+            "properties": {
+                "books": { "id": "$b12"},
+                "shelving": { "id": "$s1"},
+                "position": {
+                    "shelf": 2,
+                    "place": 1
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p13",
+            "properties": {
+                "books": { "id": "$b13"},
+                "shelving": { "id": "$s1"},
+                "position": {
+                    "shelf": 2,
+                    "place": 2
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p14",
+            "properties": {
+                "books": { "id": "$b14"},
+                "shelving": { "id": "$s1"},
+                "position": {
+                    "shelf": 2,
+                    "place": 3
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p15",
+            "properties": {
+                "books": { "id": "$b15"},
+                "shelving": { "id": "$s1"},
+                "position": {
+                    "shelf": 2,
+                    "place": 4
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p16",
+            "properties": {
+                "books": { "id": "$b16"},
+                "shelving": { "id": "$s1"},
+                "position": {
+                    "shelf": 3,
+                    "place": 1
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p17",
+            "properties": {
+                "books": { "id": "$b17"},
+                "shelving": { "id": "$s1"},
+                "position": {
+                    "shelf": 3,
+                    "place": 2
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p18",
+            "properties": {
+                "books": { "id": "$b18"},
+                "shelving": { "id": "$s1"},
+                "position": {
+                    "shelf": 3,
+                    "place": 3
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p19",
+            "properties": {
+                "books": { "id": "$b19"},
+                "shelving": { "id": "$s1"},
+                "position": {
+                    "shelf": 3,
+                    "place": 4
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p20",
+            "properties": {
+                "books": { "id": "$b20"},
+                "shelving": { "id": "$s2"},
+                "position": {
+                    "shelf": 1,
+                    "place": 1
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p21",
+            "properties": {
+                "books": { "id": "$b21"},
+                "shelving": { "id": "$s2"},
+                "position": {
+                    "shelf": 1,
+                    "place": 2
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p22",
+            "properties": {
+                "books": { "id": "$b22"},
+                "shelving": { "id": "$s2"},
+                "position": {
+                    "shelf": 1,
+                    "place": 3
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p23",
+            "properties": {
+                "books": { "id": "$b23"},
+                "shelving": { "id": "$s2"},
+                "position": {
+                    "shelf": 1,
+                    "place": 4
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p24",
+            "properties": {
+                "books": { "id": "$b24"},
+                "shelving": { "id": "$s2"},
+                "position": {
+                    "shelf": 1,
+                    "place": 5
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p25",
+            "properties": {
+                "books": { "id": "$b25"},
+                "shelving": { "id": "$s2"},
+                "position": {
+                    "shelf": 1,
+                    "place": 6
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p26",
+            "properties": {
+                "books": { "id": "$b26"},
+                "shelving": { "id": "$s2"},
+                "position": {
+                    "shelf": 1,
+                    "place": 7
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p27",
+            "properties": {
+                "books": { "id": "$b27"},
+                "shelving": { "id": "$s2"},
+                "position": {
+                    "shelf": 1,
+                    "place": 8
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p28",
+            "properties": {
+                "books": { "id": "$b28"},
+                "shelving": { "id": "$s2"},
+                "position": {
+                    "shelf": 1,
+                    "place": 9
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p29",
+            "properties": {
+                "books": { "id": "$b29"},
+                "shelving": { "id": "$s2"},
+                "position": {
+                    "shelf": 1,
+                    "place": 10
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p30",
+            "properties": {
+                "books": { "id": "$b30"},
+                "shelving": { "id": "$s2"},
+                "position": {
+                    "shelf": 2,
+                    "place": 1
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p31",
+            "properties": {
+                "books": { "id": "$b31"},
+                "shelving": { "id": "$s2"},
+                "position": {
+                    "shelf": 2,
+                    "place": 2
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p32",
+            "properties": {
+                "books": { "id": "$b32"},
+                "shelving": { "id": "$s2"},
+                "position": {
+                    "shelf": 2,
+                    "place": 3
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p33",
+            "properties": {
+                "books": { "id": "$b33"},
+                "shelving": { "id": "$s4"},
+                "position": {
+                    "shelf": 1,
+                    "place": 1
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p34",
+            "properties": {
+                "books": { "id": "$b34"},
+                "shelving": { "id": "$s4"},
+                "position": {
+                    "shelf": 1,
+                    "place": 2
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p35",
+            "properties": {
+                "books": { "id": "$b35"},
+                "shelving": { "id": "$s4"},
+                "position": {
+                    "shelf": 1,
+                    "place": 3
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p36",
+            "properties": {
+                "books": { "id": "$b36"},
+                "shelving": { "id": "$s4"},
+                "position": {
+                    "shelf": 1,
+                    "place": 4
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p37",
+            "properties": {
+                "books": { "id": "$b37"},
+                "shelving": { "id": "$s4"},
+                "position": {
+                    "shelf": 1,
+                    "place": 5
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p38",
+            "properties": {
+                "books": { "id": "$b38"},
+                "shelving": { "id": "$s4"},
+                "position": {
+                    "shelf": 1,
+                    "place": 6
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p39",
+            "properties": {
+                "books": { "id": "$b39"},
+                "shelving": { "id": "$s4"},
+                "position": {
+                    "shelf": 1,
+                    "place": 7
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p40",
+            "properties": {
+                "books": { "id": "$b40"},
+                "shelving": { "id": "$s4"},
+                "position": {
+                    "shelf": 2,
+                    "place": 1
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p41",
+            "properties": {
+                "books": { "id": "$b41"},
+                "shelving": { "id": "$s4"},
+                "position": {
+                    "shelf": 2,
+                    "place": 2
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p42",
+            "properties": {
+                "books": { "id": "$b42"},
+                "shelving": { "id": "$s2"},
+                "position": {
+                    "shelf": 3,
+                    "place": 1
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p43",
+            "properties": {
+                "books": { "id": "$b43"},
+                "shelving": { "id": "$s4"},
+                "position": {
+                    "shelf": 2,
+                    "place": 3
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p44",
+            "properties": {
+                "books": { "id": "$b44"},
+                "shelving": { "id": "$s4"},
+                "position": {
+                    "shelf": 2,
+                    "place": 4
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p45",
+            "properties": {
+                "books": { "id": "$b45"},
+                "shelving": { "id": "$s2"},
+                "position": {
+                    "shelf": 4,
+                    "place": 1
+                }
+            }
+        },
+        {
+            "association": "library.book_position",
+            "instance": "$p46",
+            "properties": {
+                "books": { "id": "$b46"},
+                "shelving": { "id": "$s2"},
+                "position": {
+                    "shelf": 4,
+                    "place": 2
+                }
+            }
+        }
+    ]
+}

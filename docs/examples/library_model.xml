@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<a:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://arolios.org/arolios/model ../schemas/xam.xsd"
+	xmlns:a="http://arolios.org/arolios/model">
+	<domain name="library">
+        <enumeration name="kind_of_book">
+            <value name="novel" />
+            <value name="poetry" />
+            <value name="play" />
+            <value name="autobiography" />
+        </enumeration>
+
+        <class name="book">
+            <property name="title" type="charstring" required="true" />
+            <property name="kind" type="kind_of_book" />
+            <identifier>
+                <property>title</property>
+            </identifier>
+        </class>
+
+        <class name="person" isAbstract="true" >
+            <property name="first_name" type="charstring"/>
+            <property name="surname" type="charstring"/>
+        </class>
+
+        <class name="writer" >
+            <base>person</base>
+            <property name="name" type="charstring" required="true" />
+            <identifier>
+                <property>name</property>
+            </identifier>
+        </class>
+
+        <association name="author" >
+            <memberEnd name="books" class="book" />
+            <memberEnd name="writers" class="writer" />
+        </association>
+
+        <class name="personal_info" >
+            <property name="introduction" type="mlangtext" />
+            <property name="birth_date" type="date" required="true" />
+            <property name="death_date" type="date" />
+        </class>
+
+        <association name="writer_info" >
+            <memberEnd name="info" class="personal_info" maxOccurs="one"/>
+            <memberEnd name="writer" class="writer" minOccurs="one" maxOccurs="one" />
+        </association>
+
+        <class name="registered_person">
+            <base>person</base>
+            <property name="id_number" type="charstring" required="true" />
+            <identifier>
+                <property>id_number</property>
+            </identifier>
+        </class>
+
+        <association name="borrowing">
+            <memberEnd name="books" class="book" />
+            <memberEnd name="borrowers" class="registered_person" />
+            <property name="borrowing_date" type="date" required="true" />
+            <property name="return_date" type="date"/>
+            <identifier>
+                <property>borrowing_date</property>
+            </identifier>
+        </association> 
+
+
+        <class name="room">
+            <property name="name" type="charstring" required="true" />
+            <identifier>
+                <property>name</property>
+            </identifier>
+        </class>
+
+        <class name="shelving" >
+            <property name="number" type="smallint" required="true" />
+        </class>
+
+        <association name="room_shelving">
+            <memberEnd name="shelvings" class="shelving" isComposition="true" />
+            <memberEnd name="room" class="room" minOccurs="one" maxOccurs="one" />
+        </association>
+
+
+        <type name="position" >
+            <property name="shelf" type="smallint"  />
+            <property name="place" type="smallint" />
+        </type>
+
+        <association name="book_position" >
+            <memberEnd name="books" class="book" />
+            <memberEnd name="shelving" class= "shelving" maxOccurs="one" />
+            <property name="position" type="position" required="true" />
+        </association>
+
+        
+
+    </domain>
+
+    <domain name="library" action="update">
+
+        <class name="personal_info" action="update">
+            <identifier>
+                <memberEnd>writer</memberEnd>
+            </identifier>
+        </class>
+
+        <class name="shelving" action="update" >
+            <identifier>
+                <property>number</property>
+                <memberEnd>room</memberEnd>
+            </identifier>
+        </class>
+
+    </domain>
+</a:model>

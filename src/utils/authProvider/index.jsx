@@ -20,7 +20,7 @@ const authProvider = {
                 const permissions = { role: json.user.role, appName: json.app.name, isDefaultApp: json.app.isDefault}
                 sessionStorage.setItem('arolios_auth', JSON.stringify(auth));
                 sessionStorage.setItem('arolios_permissions', JSON.stringify(permissions));
-                sessionStorage.setItem('arolios_model_default_language', json.app.defaultLanguage) ;
+                sessionStorage.setItem('arolios_default_language', json.app.defaultLanguage) ;
             })
             .catch(() => {
                 throw new Error('Network error')
@@ -29,7 +29,7 @@ const authProvider = {
     logout: () => {
         sessionStorage.removeItem('arolios_auth'); 
         sessionStorage.removeItem('arolios_permissions');
-        sessionStorage.removeItem('arolios_model_default_language');
+        sessionStorage.removeItem('arolios_default_language');
         // try to clear the server side
         const request = new Request(backEndURL() + '/logout', {
                 method: 'POST',            
@@ -57,7 +57,7 @@ const authProvider = {
         if (status === 401 || status === 403) {
             sessionStorage.removeItem('arolios_auth');
             sessionStorage.removeItem('arolios_permissions');
-            sessionStorage.removeItem('arolios_model_default_language');
+            sessionStorage.removeItem('arolios_default_language');
             return Promise.reject( new Error ('Authentication error'));
         }
         // other error code (404, 500, etc): no need to log out

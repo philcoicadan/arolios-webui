@@ -10,7 +10,7 @@ Voir la documentation [ici](./docs/Installation_fr.md)
 
 # Documentation
 
-La documentation d'utilisation de **AROLIOS WebUI** se trouve [ici](./docs/UserGuide_fr.md)
+Une vidéo présentant comment utiliser **AROLIOS WebUI** se trouve [ici](https://www.youtube.com/watch?v=59lapSUfY-4)
 
 La documentation sur les logiciels **AROLIOS** coté serveur et sur l'API  se trouve [ici](https://lab.frogg.it/philcoicadan/arolios-doc)
 

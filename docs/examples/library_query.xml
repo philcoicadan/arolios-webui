@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<a:query xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://arolios.org/arolios/tqry ../schemas/query.xsd"
+	xmlns:a="http://arolios.org/arolios/tqry"
+    name="query1">
+    <parameter>room_name</parameter>
+    <parameter>kind_of_book</parameter>
+    <class domain="library" name="book">
+        <property>title</property>
+        <filter>kind = $kind_of_book </filter>
+        <memberEnd name="shelving">
+                <class>
+                    <property>number</property>
+                    <memberEnd name="room">
+                        <class>
+                            <property>name</property>
+                            <filter>name = $room_name </filter>
+                        </class>
+                    </memberEnd>
+                </class>
+        </memberEnd>
+        <memberEnd name="writers">
+            <class>
+                <property>name</property>
+            </class>
+        </memberEnd>
+    </class>
+</a:query>

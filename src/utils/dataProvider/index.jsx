@@ -29,7 +29,7 @@ const CustomDataProvider = {
         const { field, order } = params.sort || {};
         const filter = params.filter || {};
         const {prefix, suffix ,context, properties, i18n } = params.meta || {};
-        const lang = localStorage.getItem ("arolios_model_language") || sessionStorage.getItem ("arolios_model_default_language");
+        const lang = localStorage.getItem ("arolios_requested_language") || sessionStorage.getItem ("arolios_default_language");
         let query ='';
         let querySep = '?';
         if (i18n !== false) {
@@ -128,13 +128,13 @@ const CustomDataProvider = {
     getOne: (resource, params) => {
 
  
-        const lang = localStorage.getItem ("arolios_model_language") || sessionStorage.getItem ("arolios_model_default_language");
+        const lang = localStorage.getItem ("arolios_requested_language") || sessionStorage.getItem ("arolios_default_language");
         let query = `?lang=${lang}`;
         const querySep = '&';
         const {prefix, suffix ,context } = params.meta || {};
         if (prefix === 'settings') {
-            const modelLang = localStorage.getItem("arolios_model_language") || sessionStorage.getItem ("arolios_model_default_language");
-            return Promise.resolve({data: { id: params.id, model_language: modelLang}});
+            const modelLang = localStorage.getItem("arolios_requested_language") || sessionStorage.getItem ("arolios_default_language");
+            return Promise.resolve({data: { id: params.id, requested_language: modelLang}});
         }
         let url = `${apiUrl}/`;
 
@@ -229,7 +229,7 @@ const CustomDataProvider = {
             const ids = params.ids;
             const instid =ids[0] ;
             // variant of getOne
-            const lang = localStorage.getItem ("arolios_model_language") || sessionStorage.getItem ("arolios_model_default_language");
+            const lang = localStorage.getItem ("arolios_requested_language") || sessionStorage.getItem ("arolios_default_language");
             let query = `?lang=${lang}`;
             const querySep = '&';
             const {prefix, suffix ,context } = params.meta || {};
@@ -320,9 +320,9 @@ const CustomDataProvider = {
     
             const {prefix, suffix ,context } = params.meta || {};
             if (prefix === 'settings') {
-                localStorage.setItem("arolios_model_language",  params.data.model_language);          
+                localStorage.setItem("arolios_requested_language",  params.data.requested_language);          
                 
-                const url = `${apiUrl}/domains?lang=${params.data.model_language}`
+                const url = `${apiUrl}/domains?lang=${params.data.requested_language}`
                 httpClient(url).then(({ headers, json }) => {
                     if (json["total"] === 1) {
                         sessionStorage.setItem('arolios_model_default_domain', JSON.stringify({ name: json["elements"][0]['name'], _tname: json["elements"][0]['_tname'] }));

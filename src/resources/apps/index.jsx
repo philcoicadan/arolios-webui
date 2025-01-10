@@ -190,7 +190,7 @@ export const AppList = (() => {
  export const AppCreate = (() => {
  
     return (
-    <Create   >
+    <Create  redirect="list" >
     
         <SimpleForm>
             
@@ -245,7 +245,7 @@ export const AppUserCreate = () => {
     const filterToQuery = searchText => ({ _s: `%${searchText}%` });
     return (
 
-        <Create mutationOptions={{ meta: {} }}>
+        <Create redirect="list" mutationOptions={{ meta: {} }}>
 
             <SimpleForm>
 
@@ -271,7 +271,7 @@ export const AppUserCreate = () => {
     const translate=useTranslate();
 
     return (
-    <Create >
+    <Create redirect="list">
     
         <SimpleForm>
 

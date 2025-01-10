@@ -82,8 +82,8 @@ export const SettingsEdit = () => {
 
             <SimpleForm toolbar={<EditToolbar />}>
 
-                <ReferenceInput source="model_language" reference="languages" sort={{ field: 'code', order: 'ASC' }} queryOptions={{ meta: { getmany_context: 'languages' } }}>
-                    <SelectInput label="arolios.model_language" optionText="name" optionValue="code" validate={required()} />
+                <ReferenceInput source="requested_language" reference="languages" sort={{ field: 'code', order: 'ASC' }} queryOptions={{ meta: { getmany_context: 'languages' } }}>
+                    <SelectInput label="arolios.requested_language" optionText="name" optionValue="code" validate={required()} />
                 </ReferenceInput>
 
             </SimpleForm>

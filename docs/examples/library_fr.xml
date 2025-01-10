@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<a:model_translation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://arolios.org/arolios/model ../schemas/xtlt.xsd"
+	xmlns:a="http://arolios.org/arolios/model"
+    language="fr">
+	<domain name="library" translation="Bibliothèque">
+        <enumeration name="kind_of_book" translation="Genre de livre">
+            <value name="novel" translation="Roman"/>
+            <value name="poetry" translation="Poésie"/>
+            <value name="play" translation="Théatre"/>
+            <value name="autobiography" translation="Autobiographie"/>
+        </enumeration>
+
+        <class name="book" translation="Livre">
+            <property name="title" translation="Titre"/>
+            <property name="kind" translation="Genre" />
+        </class>
+
+        <class name="person" translation="Personne" >
+            <property name="first_name" translation="Prénom"/>
+            <property name="surname" translation="Nom de famille"/>
+        </class>
+
+        <class name="writer" translation="Ecrivain.e">
+            <property name="name" translation="Nom" />
+        </class>
+
+        <association name="author" translation="Auteur.e">
+            <memberEnd name="books" translation="Livres"/>
+            <memberEnd name="writers" translation="Ecrivain.e.s" />
+        </association>
+
+        <class name="personal_info" translation="Infos personnelles">
+            <property name="introduction" translation="Présentation" />
+            <property name="birth_date" translation="Date de naissance"/>
+            <property name="death_date" translation="Date du décès" />
+        </class>
+
+        <association name="writer_info" translation="Info_Ecrivain.e">
+            <memberEnd name="info" translation="Info"/>
+            <memberEnd name="writer" translation="Ecrivain.e"/>
+        </association>
+
+        <class name="registered_person" translation="Inscrit.e">
+            <property name="id_number" translation="Numéro" />
+        </class>
+
+        <association name="borrowing" translation="Emprunt">
+            <memberEnd name="books" translation="Livres" />
+            <memberEnd name="borrowers" translation="Emprunteur.rice.s" />
+            <property name="borrowing_date" translation="Emprunté le" />
+            <property name="return_date" translation="Restitué le"/>
+        </association> 
+
+
+        <class name="room" translation="Salle">
+            <property name="name" translation="Nom" />
+        </class>
+
+        <class name="shelving" translation="Rayonnage">
+            <property name="number" translation="Numéro" />
+        </class>
+
+        <association name="room_shelving" translation="Salle_Rayonnages">
+            <memberEnd name="shelvings" translation="Rayonnages" />
+            <memberEnd name="room" translation="Salle" />
+        </association>
+
+
+        <type name="position" translation="Position">
+            <property name="shelf" translation="Etagère" />
+            <property name="place" translation="Emplacement" />
+        </type>
+
+        <association name="book_position" translation="Position_Livre">
+            <memberEnd name="books" translation="Livres" />
+            <memberEnd name="shelving" translation="Rayonnage" />
+            <property name="position" translation="Position" />
+        </association>
+    </domain>
+
+   
+</a:model_translation>

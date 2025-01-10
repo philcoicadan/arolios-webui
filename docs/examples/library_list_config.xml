@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<a:appConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://arolios.org/arolios/model ../schemas/appconfig.xsd"
+	xmlns:a="http://arolios.org/arolios/model">
+	<domain name="library">
+        <association name="book_position">
+            <property>position</property>
+        </association>
+        
+        <class name="book">
+            <property>kind</property>
+        </class>
+
+    </domain>
+    
+</a:appConfig>   

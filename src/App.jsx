@@ -126,8 +126,8 @@ import LoadTranslations from './pages/loadtranslations';
     const auth = sessionStorage.getItem('arolios_auth');
     if (auth) {
       const { token } = JSON.parse(sessionStorage.getItem('arolios_auth'));
-      const lang = localStorage.getItem('arolios_model_language') || 
-                  sessionStorage.getItem('arolios_model_default_language');
+      const lang = localStorage.getItem('arolios_requested_language') || 
+                  sessionStorage.getItem('arolios_default_language');
  
                   
       return fetchDomains (token, lang).then ( ( domains) => {
