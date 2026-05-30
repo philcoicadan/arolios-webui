@@ -11,7 +11,6 @@ Pour utiliser **AROLIOS WebUI**, vous devez en premier lieu installer les prére
 Il y a plusieurs méthodes dépendantes de votre système d'exploitation pour installer ces deux logiciels.
 Suivez les instructions que vous trouverez sur Internet, par exemple [ici](https://docs.npmjs.com)
 
-
  ### Construction
 
  1. Copiez les sources téléchargés dans un nouveau répertoire.
@@ -36,8 +35,7 @@ Suivez les instructions que vous trouverez sur Internet, par exemple [ici](https
     5. Enregistrez votre site en passant la commande suivante (par exemple pour arolios.conf): sudo a2ensite arolios.conf 
     6. Redémarrez le serveur Apache: sudo systemctl restart apache2
 4. Le serveur de l'API AROLIOS fonctionnant en mode HTTPS, chaque utilisateur potentiel doit installer dans son navigateur le certificat racine créé lors de l'installation du serveur (voir la documentation dans le dépôt **arolios-doc** ). Dans le paramétrage du navigateur, voir la rubrique des certificats, et importer votre certificat dans les autorités.
-5. Si le serveur de l'API AROLIOS que vous avez renseigné dans le paramètre VITE_BACKEND_URL est lancé ainsi que votre serveur web servant **AROLIOS WebUI**  (Apache par exemple), vous pouvez démarrer **AROLIOS WebUI** depuis votre navigateur web en l'adressant avec l'URL renseigné dans la configuration de votre serveur Web ( par exemple www.my-arolios.example.com).
- en mode HTTPS éventuellement
+5. Si le serveur de l'API AROLIOS que vous avez renseigné dans le paramètre VITE_BACKEND_URL est lancé ainsi que votre serveur web servant **AROLIOS WebUI**  (Apache par exemple), vous pouvez démarrer **AROLIOS WebUI** depuis votre navigateur web en l'adressant avec l'URL renseigné dans la configuration de votre serveur Web ( par exemple www.my-arolios.example.com) en mode HTTPS éventuellement.
 En cas de difficulté, référez-vous à la documentation de votre serveur web ou aux articles disponibles sur Internet pour y déployer une application React.
 
 
