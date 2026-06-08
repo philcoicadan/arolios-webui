@@ -1,12 +1,12 @@
 # General overview 
 
-See the presentation [here](https://lab.frogg.it/philcoicadan/arolios-doc/-/blob/main/src/Intro_fr.md) 
+See the presentation [here](https://lab.frogg.it/philcoicadan/arolios-doc/-/blob/main/src/Intro.md) 
 
 The rest of the text concerns **AROLIOS WebUI** 
 
 # Installation 
 
-See the documentation [here](./docs/Installation_fr.md) 
+See the documentation [here](./docs/Installation.md) 
 
 # Documentation 
 
